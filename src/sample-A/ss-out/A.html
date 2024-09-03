@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Problem Statement</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      html {
+          color: #222222;
+          font-family: 'Times New Roman', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', meiryo, Verdana, "lr oSVbN";
+      }
+
+      h1{
+          font-size:16pt;
+          border-bottom: solid 2px #e0e0e0;
+          margin-bottom:20px;
+      }
+
+      h2{
+          font-size:14pt;
+          border-bottom: solid 2px #e0e0e0;
+          margin-bottom:20px;
+          margin-top:20px;
+      }
+
+      h3{
+          font-size:14pt;
+          border-bottom: solid 2px #e0e0e0;
+          margin-bottom:20px;
+          margin-top:20px;
+      }
+
+      h4{
+          font-size:13pt;
+          margin-bottom:20px;
+          margin-top:20px;
+      }
+
+      h5{
+          font-size:12pt;
+          margin-bottom:20px;
+          margin-top:20px;
+      }
+
+      b{
+          font-weight:bold;
+      }
+
+      p{
+          font-size:12pt;
+          font-family: 'Times New Roman', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', meiryo, Verdana, "lr oSVbN"; 
+      }
+
+      li{
+          font-size:12pt;
+          font-family: 'Times New Roman', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', meiryo, Verdana, "lr oSVbN"; 
+      }
+
+      pre {
+          font-size:11pt;
+          padding: 8px;
+          border: solid 1px #e0e0e0;
+          border-radius: 4px;
+      }
+
+      pre > code {
+          color: #222222;
+      }
+
+      .testcase_pre{
+          font-size:11pt;
+          padding: 8px;
+          border: solid 1px #e0e0e0;
+          border-radius: 4px;
+          overflow:auto;
+          max-width:480;
+          max-height:340;
+      }
+
+      .error_pre{
+          font-size:11pt;
+          padding: 8px;
+          border: solid 1px #f0e0e0;
+          border-radius: 4px;
+          overflow:auto;
+          max-height:340;
+          background-color:#ffeeee;
+      }
+
+      .table tbody > tr > td.vert-aligned {
+          vertical-align: middle;
+      }
+
+      code {
+        font-size: 87.5%;
+        color: #e83e8c;
+        word-break: break-word;
+      }
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [["$", "$"]],
+                processEscapes: true,
+                processClass: 'input-format|language-input-format'
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+  </head>
+  <body>
+    <h2>A:ナンってナン回言った？</h2>
+<h3>問題</h3>
+<p>HCPC に所属している pitsu 君はサークルの活動後にカレー屋さんに行きました。そこでは張り紙にこんなことが書いてありました。</p>
+<p>「ナンおかわり自由！」</p>
+<p>これを見た waku 君は</p>
+<p>「ナンと言った数だけナンをおかわりしよう」</p>
+<p>と提案しました。pitsu 君の発言が与えられるので、pitsu 君がナンと言った回数を求めてください。</p>
+<p>具体的には、文字列 $t_1\ldots t_m$ がナンであるとは、$m\ge 3$ かつ $t_1=t_m=\ $<code>N</code>$,\ t_i=\ $<code>A</code>$\ (i=2,\ldots,m-1)$ をみたすことを言います。<code>A</code> と <code>N</code> のみからなる長さ $N$ の文字列 $S$ が与えられるので、$S$ の連続する部分文字列であってナンであるものの数を数えてください。</p>
+<h3>入力形式</h3>
+<p>入力は以下の形式で与えられる。</p>
+<pre class="input-format"><code class="language-input-format">$N$
+$S$
+</code></pre>
+<h3>制約</h3>
+<ul>
+<li>$1 \leq N \leq 2{,}000$</li>
+<li>$N$は整数</li>
+<li>$S$ は <code>N</code>, <code>A</code> のみからなる長さ $N$ の文字列である</li>
+</ul>
+<h3>出力形式</h3>
+<p>$S$ の部分文字列であってナンであるものの数を一行に出力する。最後に改行すること。</p>
+<h3>入力例 1</h3>
+<pre>
+3
+NAN
+</pre>
+<h3>出力例 1</h3>
+<pre>
+1
+</pre>
+<h3>入力例 2</h3>
+<pre>
+3
+ANA
+</pre>
+<h3>出力例 2</h3>
+<pre>
+0
+</pre>
+<h3>入力例 3</h3>
+<pre>
+12
+NAAAAAAAANAN
+</pre>
+<h3>出力例 3</h3>
+<pre>
+2
+</pre>
+<h3>入力例 4</h3>
+<pre>
+50
+ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
+</pre>
+<h3>出力例 4</h3>
+<pre>
+14
+</pre>
+  </body>
+</html>

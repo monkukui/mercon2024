@@ -1,0 +1,190 @@
+//#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<random>
+#include<string>
+#include<vector>
+#include<set>
+#include<utility>
+#include<cassert>
+#include<fstream>
+#include "constraints.hpp"
+using namespace std;
+typedef unsigned long long int ull;
+typedef long long int ll;
+typedef pair<ll,ll> pll;
+typedef long double D;
+//typedef complex<D> P;
+#define F first
+#define S second
+const ll MOD=1000000007;
+//const ll MOD=998244353;
+
+template<typename T,typename U>istream & operator >> (istream &i,pair<T,U> &A){i>>A.F>>A.S; return i;}
+template<typename T>istream & operator >> (istream &i,vector<T> &A){for(auto &I:A){i>>I;} return i;}
+template<typename T,typename U>ostream & operator << (ostream &o,const pair<T,U> &A){o<<A.F<<" "<<A.S; return o;}
+template<typename T>ostream & operator << (ostream &o,const vector<T> &A){int i=A.size(); for(auto &I:A){o<<I<<(--i?" ":"");} return o;}
+template<typename T,typename U>T & chmax(T &a,const U &b){if(a<b){a=b;} return a;}
+template<typename T,typename U>T & chmin(T &a,const U &b){if(b<a){a=b;} return a;}
+
+
+const ll seed=3827631762932782765LL;
+
+mt19937_64 R(seed);
+
+//[mi,mx)
+ll Int(ll mi,ll mx){
+    assert(mx>mi);
+    ull w=mx-mi;
+    ull k=1;
+    while(w>k){k<<=1;}
+    ull x=w;
+    while(x>=w){x=R()&(k-1);}
+    return (ll)x+mi;
+}
+
+
+vector<ll>& Rand_Perm(vector<ll> &ret,ll n){
+  ret.resize(n);
+    for(int i=0;i<n;i++){
+        ret[i]=i+1;
+        ll l=Int(0,i+1);
+        if(l!=i){swap(ret[l],ret[i]);}
+    }
+    return ret;
+}
+
+template<typename T>
+vector<T>& Rand_Shuffle(vector<T> &ret){
+  for(int i=1;i<ret.size();i++){
+    ll l=Int(0,i+1);
+    if(l!=i){swap(ret[l],ret[i]);}
+  }
+  return ret;
+}
+
+ll N,M,Q;
+vector<ll> C;
+vector<pll> edge;
+vector<pll> query;
+
+vector<ll> base;
+
+ll rand_N(){return Int(MIN_N,MAX_N+1);}
+
+ll rand_M(){return Int(N-1,min(MAX_M,N*(N-1)/2)+1);}
+
+ll rand_Q(){return Int(MIN_Q,MAX_Q+1);}
+
+ll rand_C(){return Int(MIN_C,MAX_C+1);}
+
+int lowest_bit(ll x){
+  if(x<=0){return -1;}
+  for(int i=0;;i++){if(x>>i&1){return i;}}
+  return -1;
+}
+
+void build(){
+  base.clear();
+  ll sz=Int(0,60+1);
+  vector<int> tp(sz);
+  for(int i=0;i<sz;i++){
+    ll X=rand_C();
+    do{
+      X=rand_C();
+      for(int j=0;j<i;j++){
+        if(X>>tp[j]&1){X^=base[j];}
+      }
+    }while(X==0);
+    base.push_back(X);
+    tp[i]=lowest_bit(X);
+    for(int j=i;j>0;j--){
+      if(tp[j]<tp[j-1]){swap(tp[j],tp[j-1]); swap(base[j],base[j-1]);}
+      else{break;}
+    }
+  }
+  for(int i=1;i<sz;i++){assert(tp[i-1]<tp[i]);}
+  for(int i=0;i<sz;i++){assert(tp[i]==lowest_bit(base[i]));}
+}
+
+void rand_vec_C(){
+  C.resize(N);
+  ll x,sz=base.size();
+  for(auto &I:C){
+    I=0;
+    x=Int(0,1LL<<sz);
+    for(int i=0;i<sz;i++){
+      if(x>>i&1){I^=base[i];}
+    }
+  }
+  ll k=rand_C();
+  for(auto &I:C){I^=k;}
+}
+
+pll rand_pair(){
+  ll u=0,v=0;
+  while(u==v){
+    u=Int(0,N); v=Int(0,N);
+  }
+  return {u,v};
+}
+
+void rand_edge(){
+  set<pll> S;
+  edge.clear();
+  vector<ll> P; Rand_Perm(P,N);
+  for(int i=1;i<N;i++){
+    int p=Int(0,i);
+    edge.push_back({P[p],P[i]});
+    S.insert({p,i});
+    S.insert({i,p});
+  }
+  while(edge.size()<M){
+    pll e=rand_pair();
+    if(S.count(e)==0){
+      S.insert(e); S.insert({e.S,e.F});
+      edge.push_back({P[e.F],P[e.S]});
+    }
+  }
+  Rand_Shuffle(edge);
+}
+
+void rand_query(){
+  query.clear();
+  while(query.size()<Q){
+    pll e=rand_pair();
+    query.push_back({e.F+1,e.S+1});
+  }
+}
+
+void out(string file){
+  ofstream ofs(file,ios::out);
+  ofs<<N<<" "<<M<<" "<<Q<<endl;
+  ofs<<C<<endl;
+  for(auto &I:edge){ofs<<I<<endl;}
+  for(auto &I:query){ofs<<I<<endl;}
+  ofs.close();
+}
+
+void test(){
+  static string num="00";
+  string file="10_rand_"+num+".in";
+  build();
+  N=rand_N();
+  M=rand_M();
+  Q=rand_Q();
+  rand_vec_C();
+  rand_edge();
+  rand_query();
+  out(file);
+  if(num[1]=='9'){num[0]++; num[1]='0';}
+  else{num[1]++;}
+}
+
+
+
+int main(){
+  for(int i=0;i<rand_case;i++){test();}
+  
+  return 0;
+}
