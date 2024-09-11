@@ -1,6 +1,7 @@
 # -*- coding: utf-8; mode: python -*-
 
 ## You can load plugins here.
+use_plugin('rime_plus')
 use_plugin('merged_test')
 use_plugin('wikify')
 use_plugin('wikify_full')
