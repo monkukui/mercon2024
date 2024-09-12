@@ -11,7 +11,7 @@ using namespace std;
 template<class T>bool chmax(T &a, const T &b) { if (a<b) { a=b; return 1; } return 0; }
 template<class T>bool chmin(T &a, const T &b) { if (b<a) { a=b; return 1; } return 0; }
 const double PI = 3.141592653589793238462643383279;
-#include "../../common/testlib.h"
+#include "../../../common/testlib.h"
 #include "constraints.hpp"
 using namespace std;
 

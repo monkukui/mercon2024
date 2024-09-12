@@ -6,7 +6,6 @@
 #include <stack>
 #include <vector>
 #include <utility>
-#include "../../common/xrand.h"
 #include "constraints.hpp"
 
 int main() {
