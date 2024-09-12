@@ -23,6 +23,7 @@ $u_N$ $v_N$ $h_N$
 - ${@constraints.MIN_V} \leq v_i \leq {@constraints.MAX_V}$
 - 入力はすべて整数
 - 入力は、幸福度の最大化に一意の解が存在するように作成されている
+- If $u_i$==$v_i$ and $u_j$==$v_j$, $h_i$==$h_j$
 
 
 ### 出力形式
