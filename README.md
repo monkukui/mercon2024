@@ -1,5 +1,28 @@
 ## 作業分担
 
+## 作問手順
+### 問題文作成
+
+1. src/sample-Aをsrc/[your problem]にコピペする
+2. src/[your problem]/statement/statement.mdに問題文を書いて、レビューしてもらう
+3. 制約をsrc/[your problem]/problem.tomlで定義して、問題文で引用する
+4. ss-managerで問題文のHTMLを生成する
+```
+ss-manager run src/[your problem]
+```
+
+### テストケース生成
+
+テストケースはsrc/[your problem]/testsに置く
+
+op1: genertor を C++ or Python で書く
+https://github.com/monkukui/mercon2024/blob/main/src/sample-A/tests/generator.cpp
+op2: 直接 .in .out file を tests 以下に置く
+https://github.com/monkukui/mercon2024/tree/main/src/sample-A/tests
+
+### Writer 解を書く
+参考: https://github.com/monkukui/mercon2024/tree/main/src/sample-A/TAB_AC
+
 ## rime
 
 非公式ドキュメントが色々書いてある
