@@ -22,9 +22,20 @@ rime install
 pip3 install git+https://github.com/icpc-jag/rime
 ```
 
+statements-manager install(問題文生成用)
+```
+pip3 install statements-manager
+```
+
 ### テストの実行方法
 
 自分の作ったデレクトリで `rime test` するとテストを実行できる
+
+### 問題文生成方法
+
+```
+ss-manager run <your-problem-folder>
+```
 
 ### WA, TLEのコードの追加方法
 

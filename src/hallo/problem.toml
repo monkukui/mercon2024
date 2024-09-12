@@ -5,9 +5,12 @@ mode = "local"
 id = "A"
 
 # pato to a statement, output params
-statement_path = "./statement/statement.md"
 params_path = "./tests/constraints.hpp"
 lang = "ja"
+
+[[statements]]
+path = "./statement/statement.md"
+markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 
 # write constraints
 [constraints]
