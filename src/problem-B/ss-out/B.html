@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Problem Statement</title>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        html {
+            color: #222222;
+            font-family: "Noto Serif";
+        }
+
+        h1 {
+            font-size: 16pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h4 {
+            font-size: 13pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h5 {
+            font-size: 12pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 12pt;
+        }
+
+        li {
+            font-size: 12pt;
+        }
+
+        pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+        }
+
+        code {
+            color: #e83e8c;
+        }
+
+        code.language-input-format {
+            color: #222222;
+        }
+
+        .testcase_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-width: 480;
+            max-height: 340;
+        }
+
+        .error_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #f0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-height: 340;
+            background-color: #ffeeee;
+        }
+
+        .table tbody>tr>td.vert-aligned {
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [["$", "$"]],
+                processEscapes: true,
+                processClass: 'input-format|language-input-format'
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+</head>
+
+<body>
+    
+    <div >
+        <h2>B:購入</h2>
+<h3>問題</h3>
+<p>メルカリではたくさんのアイテムが販売されており、ユーザー$u_i$がアイテム$v_i$を購入すると、そのアイテムに対応する幸福度$h_i$がユーザー$u_i$に与えられます。幸福度情報が$N$個与えられます。ユーザーがそれぞれ複数のアイテムを購入することができますが、各アイテムは一度しか購入できません。</p>
+<p>すべてのユーザーが幸福度の合計を最大化するような購入方法を求めてください。</p>
+<h3>入力形式</h3>
+<p>入力は以下の形式で与えられる。</p>
+<p><code>{ .input-format .input-format }
+$N$
+$u_1$ $v_1$ $h_1$
+$u_2$ $v_2$ $h_2$
+$\dots$
+$u_N$ $v_N$ $h_N$</code></p>
+<h3>制約</h3>
+<ul>
+<li>$1 \leq N \leq 100{,}000$</li>
+<li>$1 \leq u_i \leq 100{,}000$</li>
+<li>$1 \leq v_i \leq 100{,}000$</li>
+<li>$N$は整数</li>
+<li>入力は、幸福度の最大化に一意の解が存在するように作成されている</li>
+</ul>
+<h3>出力形式</h3>
+<p>幸福度の合計を最大化するようなトランザクション数$M$と、各トランザクションの情報（ユーザー$u$とアイテム$i$）を出力してください
+<code>{ .input-format .input-format }
+$M$
+$u_1$ $i_1$
+$u_2$ $i_2$
+$\dots$
+$u_M$ $i_M$</code></p>
+<h3>入力例 1</h3>
+<p><code>{ .input-format .input-format }
+3
+NAN</code></p>
+<h3>出力例 1</h3>
+<p><code>{ .input-format .input-format }
+1</code></p>
+<h3>入力例 2</h3>
+<p><code>{ .input-format .input-format }
+3
+ANA</code></p>
+<h3>出力例 2</h3>
+<p><code>{ .input-format .input-format }
+0</code></p>
+<h3>入力例 3</h3>
+<p><code>{ .input-format .input-format }
+12
+NAAAAAAAANAN</code></p>
+<h3>出力例 3</h3>
+<p><code>{ .input-format .input-format }
+2</code></p>
+<h3>入力例 4</h3>
+<p><code>{ .input-format .input-format }
+50
+ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN</code></p>
+<h3>出力例 4</h3>
+<p><code>{ .input-format .input-format }
+14</code></p>
+    </div>
+    
+</body>
+
+</html>
