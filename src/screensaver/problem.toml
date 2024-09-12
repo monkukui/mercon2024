@@ -1,0 +1,17 @@
+# choose mode ('docs' or 'local')
+mode = "local"
+
+# problem id (it is used for the name of output html file)
+id = "C"
+
+# pato to a statement, output params
+statement_path = "./statement/statement.md"
+params_path = "./tests/constraints.hpp"
+lang = "ja"
+
+# write constraints
+[constraints]
+    MIN_WHT = 0
+    MAX_WHT = 1000000000000
+    MIN_V = -1000000000000
+    MAX_V = 1000000000000
