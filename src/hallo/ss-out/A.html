@@ -112,54 +112,60 @@
 <body>
     
     <div >
-        <h2>A:ナンってナン回言った？</h2>
+        <h2>hallo</h2>
 <h3>問題</h3>
-<p>HCPC に所属している pitsu 君はサークルの活動後にカレー屋さんに行きました。そこでは張り紙にこんなことが書いてありました。</p>
-<p>「ナンおかわり自由！」</p>
-<p>これを見た waku 君は</p>
-<p>「ナンと言った数だけナンをおかわりしよう」</p>
-<p>と提案しました。pitsu 君の発言が与えられるので、pitsu 君がナンと言った回数を求めてください。</p>
-<p>具体的には、文字列 $t_1\ldots t_m$ がナンであるとは、$m\ge 3$ かつ $t_1=t_m=\ $<code>N</code>$,\ t_i=\ $<code>A</code>$\ (i=2,\ldots,m-1)$ をみたすことを言います。<code>A</code> と <code>N</code> のみからなる長さ $N$ の文字列 $S$ が与えられるので、$S$ の連続する部分文字列であってナンであるものの数を数えてください。</p>
+<p>$1$ 次元空間上で $N$ 個の仕事の募集があります。 $i$ 個目の仕事は座標 $x_i$ で $d_i$ 日目に募集され、その仕事を行うことで $c_i$ 円の報酬を受け取ることができます。 なお、 $d_i$ 日目に募集されたバイトは $d_i$ 日目以外に行うことはできません。
+あなたは $1$ 日目に座標 $1$ にいて、 $i$ 日目 $(1 \leq i \leq M)$ には以下の行動をします。</p>
+<ul>
+<li>現在いる座標で $i$ 日目に募集された仕事があれば、その仕事を行う。条件を満たす仕事の募集がなければ何もしない。</li>
+<li>現在いる座標を $x$ とすると $x - 1, x, x + 1$ のいずれかに移動し $i$ 日目の行動を終了する。</li>
+</ul>
+<p>最適な行動をとったとき $M$ 日目の行動終了時までに最大で何円報酬を受け取ることができるか出力してください。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N$
-$S$
+<pre class="input-format"><code class="language-input-format">$N$ $M$
+$x_1$ $d_1$ $c_1$
+$x_2$ $d_2$ $c_2$
+$\dots$
+$x_N$ $d_N$ $c_N$
 </code></pre>
 <h3>制約</h3>
 <ul>
-<li>$1 \leq N \leq 2{,}000$</li>
-<li>$N$は整数</li>
-<li>$S$ は <code>N</code>, <code>A</code> のみからなる長さ $N$ の文字列である</li>
+<li>入力は全て整数</li>
+<li>$1 \leq N,M \leq 100{,}000$</li>
+<li>$1 \leq d_i \leq M$</li>
+<li>$1 \leq x_i, c_i \leq 100{,}000$</li>
+<li>$i \neq j$ ならば $(x_i, d_i) \neq (x_j, d_j)$</li>
 </ul>
 <h3>出力形式</h3>
-<p>$S$ の部分文字列であってナンであるものの数を一行に出力する。最後に改行すること。</p>
+<p>答えを整数として出力せよ。
+なお、答えが $32$ bit 整数に収まらないことがある事に注意してください。</p>
 <h3>Sample Input 1</h3>
-<pre class="input-format"><code class="language-input-format">3
-NAN
+<pre class="input-format"><code class="language-input-format">4 5
+3 1 2
+2 3 3
+1 5 2
+1 1 1
 </code></pre>
 <h3>Sample Output 1</h3>
-<pre class="input-format"><code class="language-input-format">1
+<pre class="input-format"><code class="language-input-format">6
 </code></pre>
 <h3>Sample Input 2</h3>
-<pre class="input-format"><code class="language-input-format">3
-ANA
+<pre class="input-format"><code class="language-input-format">3 100000
+1 2 2
+9999 9999 100000
+100000 100000 100000
 </code></pre>
 <h3>Sample Output 2</h3>
-<pre class="input-format"><code class="language-input-format">0
+<pre class="input-format"><code class="language-input-format">200000
 </code></pre>
 <h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">12
-NAAAAAAAANAN
+<pre class="input-format"><code class="language-input-format">2 2
+2 1 2
+3 2 3
 </code></pre>
 <h3>Sample Output 3</h3>
-<pre class="input-format"><code class="language-input-format">2
-</code></pre>
-<h3>Sample Input 4</h3>
-<pre class="input-format"><code class="language-input-format">50
-ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
-</code></pre>
-<h3>Sample Output 4</h3>
-<pre class="input-format"><code class="language-input-format">14
+<pre class="input-format"><code class="language-input-format">0
 </code></pre>
     </div>
     

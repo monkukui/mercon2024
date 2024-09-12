@@ -1,0 +1,4 @@
+myenv/
+src/*/rime-out/*
+src/rime/*
+.vscode/
