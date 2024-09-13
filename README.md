@@ -58,3 +58,6 @@ https://rime-doc.readthedocs.io/ja/latest/index.html
 ### テストの実行方法
 
 src/[your problem]/で `rime test` するとテストを実行できる
+
+validator.cpp:4:10: fatal error: ../../common/testlib.h: No such file or directory
+というエラーが出た場合はvalidator.cppとgenerator.cppの　#include "../../common/　を　#include "../../../common/　に変えてください
