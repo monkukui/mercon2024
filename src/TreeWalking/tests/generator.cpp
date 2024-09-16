@@ -26,7 +26,7 @@ int main() {
             std::ofstream output(file_name);
 
             int n=Rnd.NextInt(min_n[typenum],max_n[typenum]);
-            int k = Rnd.NexInt(1, n);
+            int k = Rnd.NextInt(1, n);
             output<<n<<" "<<k<<std::endl;
 
             // generate tree
@@ -34,7 +34,7 @@ int main() {
             for(int i=1;i<n;++i){
                 p[i]=Rnd.NextInt(0,i-1);
             }
-            std::random_shuffle(p.begin(),p.end());
+            Rnd.Shuffle(p.begin(),p.end());
             for(int i=1;i<n;++i){
                 output<<p[i]+1<<" "<<i+1<<std::endl;
             }
@@ -44,7 +44,7 @@ int main() {
             for(int i=0;i<n;++i){
                 perm[i]=i;
             }
-            std::random_shuffle(perm.begin(),perm.end());
+            Rnd.Shuffle(perm.begin(),perm.end());
             for(int i=0;i<n;++i){
                 output<<perm[i]+1<<" ";
             }
