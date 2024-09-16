@@ -18,3 +18,5 @@ lang = "ja"
     MAX_U = 100000
     MIN_V = 1
     MAX_V = 100000
+    MIN_H = 1
+    MAX_H = 100
