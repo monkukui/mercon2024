@@ -1,4 +1,4 @@
-#!/usr/bin/pypy3
+#!/usr/bin/python3
 # [ref] atcoder naming
 # 00_sample_01.in
 # 00_sample_02.in
@@ -15,7 +15,7 @@ MAX_H = 100
 
 def write_or_print(file_name, test_case, write_to_file):
     if write_to_file:
-        with open(f"src/problem-B/tests/{file_name}", 'w') as f:
+        with open(f"BuyItem/tests/{file_name}", 'w') as f:
             f.write(str(test_case[0]) + '\n')
             for i in range(1, len(test_case)):
                 f.write(' '.join(map(str, test_case[i])) + '\n')
@@ -44,24 +44,23 @@ def generate_random_test_case(i, N, max_u, max_v, max_h, is_sample=True, write_t
             h = random.randint(1, max_h)
         vhset.add((v,h))
 
-        h = random.randint(1, max_h)
         test_case.append([u, v, h])
     # write to file
     # pad i to 2 digits
     write_or_print(file_name, test_case, write_to_file)
 
 
-random.seed(0)
-# generate 3 samples
-generate_random_test_case(1, 4, 2, 2, MAX_H, write_to_file=True)
-generate_random_test_case(2, 10, 5, 5, MAX_H, write_to_file=True)
-generate_random_test_case(3, 15, 10, 20, MAX_H, write_to_file=True)
+# random.seed(0)
+# # generate 3 samples
+# generate_random_test_case(1, 4, 2, 2, MAX_H, write_to_file=True)
+# generate_random_test_case(2, 10, 5, 5, MAX_H, write_to_file=True)
+# generate_random_test_case(3, 15, 10, 20, MAX_H, write_to_file=True)
 
-# generate random test cases
-for i in range(10):
-    N = random.randint(1, MAX_SMALL)
-    generate_random_test_case(i+1, N, MAX_SMALL, MAX_SMALL, MAX_H, is_sample=False, write_to_file=True)
+# # generate random test cases
+# for i in range(10):
+#     N = random.randint(1, MAX_SMALL)
+#     generate_random_test_case(i+1, N, MAX_SMALL, MAX_SMALL, MAX_H, is_sample=False, write_to_file=True)
 
-for i in range(11,20):
-    N = random.randint(1, MAX_LARGE)
-    generate_random_test_case(i+1, N, MAX_LARGE, MAX_LARGE, MAX_H, is_sample=False, write_to_file=True)
+# for i in range(11,20):
+#     N = random.randint(1, MAX_LARGE)
+#     generate_random_test_case(i+1, N, MAX_LARGE, MAX_LARGE, MAX_H, is_sample=False, write_to_file=True)
