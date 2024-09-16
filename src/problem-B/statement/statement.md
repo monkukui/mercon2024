@@ -21,6 +21,7 @@ $u_N$ $v_N$ $h_N$
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
 - ${@constraints.MIN_U} \leq u_i \leq {@constraints.MAX_U}$
 - ${@constraints.MIN_V} \leq v_i \leq {@constraints.MAX_V}$
+- ${@constraints.MIN_H} \leq h_i \leq {@constraints.MAX_H}$
 - 入力はすべて整数
 - 入力は、幸福度の最大化に一意の解が存在するように作成されている
 - $i != j$の時、$(u_i, v_i) != (u_j, v_j)$
