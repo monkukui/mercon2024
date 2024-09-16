@@ -1,4 +1,5 @@
-#!/usr/bin/pypy3
+#!/usr/bin/python3
+
 n = int(input())
 
 item_max_dict = {}
@@ -12,5 +13,7 @@ for i in range(n):
         item_max_dict[v] = (h, u)
 
 print(len(item_max_dict))
+# sort by key
+item_max_dict = dict(sorted(item_max_dict.items()))
 for k,v in item_max_dict.items():
-    print(v[1], k)
+    print(k, v[1])

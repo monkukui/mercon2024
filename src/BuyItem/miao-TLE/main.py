@@ -1,4 +1,5 @@
-#!/usr/bin/pypy3
+#!/usr/bin/python3
+
 n = int(input())
 
 res = []
@@ -22,5 +23,7 @@ for v in vset:
     res.append((cur_max_u, v))
 
 print(len(res))
+# sort by v
+res = sorted(res, key=lambda x: x[1])
 for u,v in res:
-    print(u, v)
+    print(v, u)
