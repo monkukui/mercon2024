@@ -6,7 +6,7 @@
 #include <stack>
 #include <vector>
 #include <utility>
-#include "../../common/xrand.h"
+#include "../../../common/xrand.h"
 #include "constraints.hpp"
 
 using namespace std;
@@ -32,11 +32,10 @@ int main() {
             // generate tree
             std::vector<int> p(n);
             for(int i=1;i<n;++i){
-                p[i]=Rnd.NextInt(0,i-1);
+                p[i]=Rnd.NextInt(0,i - 1);
             }
-            Rnd.Shuffle(p.begin(),p.end());
             for(int i=1;i<n;++i){
-                output<<p[i]+1<<" "<<i+1<<std::endl;
+                output<<p[i]+1<<" "<<i+1<<endl;
             }
 
             // generate permutation
