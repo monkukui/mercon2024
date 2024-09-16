@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Problem Statement</title>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        html {
+            color: #222222;
+            font-family: "Noto Serif";
+        }
+
+        h1 {
+            font-size: 16pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h4 {
+            font-size: 13pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h5 {
+            font-size: 12pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 12pt;
+        }
+
+        li {
+            font-size: 12pt;
+        }
+
+        pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+        }
+
+        code {
+            color: #e83e8c;
+        }
+
+        code.language-input-format {
+            color: #222222;
+        }
+
+        .testcase_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-width: 480;
+            max-height: 340;
+        }
+
+        .error_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #f0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-height: 340;
+            background-color: #ffeeee;
+        }
+
+        .table tbody>tr>td.vert-aligned {
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [["$", "$"]],
+                processEscapes: true,
+                processClass: 'input-format|language-input-format'
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+</head>
+
+<body>
+    
+    <div >
+        <h2>B:購入</h2>
+<h3>問題</h3>
+<p>メルカリではたくさんのアイテムが販売されており、ユーザー$u_i$がアイテム$v_i$を購入すると、そのアイテムに対応する幸福度$h_i$がユーザー$u_i$に与えられます。幸福度情報が$N$個与えられます。ユーザーがそれぞれ複数のアイテムを購入することができますが、各アイテムは一度しか購入できません。</p>
+<p>すべてのユーザーの幸福度の合計を最大化するような購入方法を求めてください。なお、与えられる入力では全てのユーザーの幸福度の合計が最大になるような購入方法は一意に定まります。</p>
+<h3>入力形式</h3>
+<p>入力は以下の形式で与えられる。</p>
+<p><code>{ .input-format .input-format }
+$N$
+$u_1$ $v_1$ $h_1$
+$u_2$ $v_2$ $h_2$
+$\dots$
+$u_N$ $v_N$ $h_N$</code></p>
+<h3>制約</h3>
+<ul>
+<li>$1 \leq N \leq 100{,}000$</li>
+<li>$1 \leq u_i \leq 100{,}000$</li>
+<li>$1 \leq v_i \leq 100{,}000$</li>
+<li>$1 \leq h_i \leq 100$</li>
+<li>入力はすべて整数</li>
+<li>入力は、幸福度の最大化に一意の解が存在するように作成されている</li>
+<li>$i != j$の時、$(u_i, v_i) != (u_j, v_j)$</li>
+</ul>
+<h3>出力形式</h3>
+<p>幸福度の合計を最大化するようなトランザクション数（購入数）$M$と、各トランザクションの情報（ユーザー$u$とアイテム$i$）を出力してください
+<code>{ .input-format .input-format }
+$M$
+$u_1$ $i_1$
+$u_2$ $i_2$
+$\dots$
+$u_M$ $i_M$</code></p>
+<h3>入力例 1</h3>
+<p><code>{ .input-format .input-format }
+4
+2 2 34
+2 1 18
+1 2 91
+1 1 43</code></p>
+<h3>入力例 2</h3>
+<p><code>{ .input-format .input-format }
+10
+4 5 46
+4 3 82
+2 5 57
+5 3 71
+1 1 52
+1 5 43
+2 3 9
+2 2 70
+4 1 41
+5 4 39</code></p>
+<h3>入力例 3</h3>
+<p><code>{ .input-format .input-format }
+15
+9 10 16
+9 11 27
+10 18 37
+8 3 50
+6 19 38
+3 7 5
+10 9 9
+2 5 5
+2 18 51
+9 9 31
+4 19 75
+5 15 85
+6 3 79
+2 16 81
+6 7 3</code></p>
+    </div>
+    
+</body>
+
+</html>
