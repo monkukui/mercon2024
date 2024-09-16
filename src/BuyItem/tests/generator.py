@@ -1,3 +1,4 @@
+#!/usr/bin/pypy3
 # [ref] atcoder naming
 # 00_sample_01.in
 # 00_sample_02.in
