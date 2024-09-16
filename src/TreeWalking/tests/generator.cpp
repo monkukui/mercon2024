@@ -26,14 +26,35 @@ int main() {
             std::ofstream output(file_name);
 
             int n=Rnd.NextInt(min_n[typenum],max_n[typenum]);
-            int k = Rnd.NextInt(1, n);
-            output<<n<<" "<<k<<std::endl;
 
             // generate tree
             std::vector<int> p(n);
             for(int i=1;i<n;++i){
                 p[i]=Rnd.NextInt(0,i - 1);
             }
+
+            vector<vector<int>> graph(n);
+            for (int i = 0; i < n; i++) {
+                graph[p[i]].push_back(i);
+                graph[i].push_back(p[i]);
+            }
+
+            vector<int> height(n, -1);
+            auto efs = [&](auto &&f, int v, int p) -> void {
+                height[v] = 1;
+                for (int u : graph[v]) {
+                    if (u == p) continue;
+                    f(f, u, v);
+                    height[v] = max(height[v], height[u] + 1);
+                }
+            };
+            efs(efs, 0, -1);
+
+            int k = Rnd.NextInt(1, height[0] + 10);
+
+
+            output<<n<<" "<<k<<std::endl;
+
             for(int i=1;i<n;++i){
                 output<<p[i]+1<<" "<<i+1<<endl;
             }
