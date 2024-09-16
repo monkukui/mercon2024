@@ -6,17 +6,18 @@
 #include <stack>
 #include <vector>
 #include <utility>
-#include "../../common/xrand.h"
+#include "../../../common/xrand.h"
 #include "constraints.hpp"
 
-const int num_of_type = 4;
-std::string case_type[num_of_type] = {"10_random_small","11_random_large","20_all_a","21_all_n"};
-int num_of_case[num_of_type] = {10,10,5,5};
-int min_n[num_of_type] = {1,MAX_N,1,1};
-int max_n[num_of_type] = {100,MAX_N,MAX_N,MAX_N};
-char charset[2] = {'A','N'};
+using namespace std;
 
-XRand Rnd(334);
+const int num_of_type = 2;
+std::string case_type[num_of_type] = {"10_random_small","11_random_large"};
+int num_of_case[num_of_type] = {15,15};
+int min_n[num_of_type] = {1,MAX_N};
+int max_n[num_of_type] = {100,MAX_N};
+
+XRand Rnd(283);
 
 int main() {
     for(int typenum=0;typenum<num_of_type;++typenum){
@@ -24,34 +25,29 @@ int main() {
             std::string file_name=case_type[typenum]+std::to_string(casenum)+".in";
             std::ofstream output(file_name);
 
-
             int n=Rnd.NextInt(min_n[typenum],max_n[typenum]);
-            output<<n<<std::endl;
+            int k = Rnd.NextInt(1, n);
+            output<<n<<" "<<k<<std::endl;
 
-            switch(typenum) {
-                case 0:
-                case 1:
-                    for(int i = 0; i < n; ++i) {
-                        output<<charset[Rnd.NextInt(0,1)];
-                    }
-                    output<<std::endl;
-                break;
-
-                case 2:
-                    for(int i = 0; i < n; ++i) {
-                        output<<charset[0];
-                    }
-                    output<<std::endl;
-                break;
-
-                case 3:
-                    for(int i = 0; i < n; ++i) {
-                        output<<charset[1];
-                    }
-                    output<<std::endl;
-                break;
+            // generate tree
+            std::vector<int> p(n);
+            for(int i=1;i<n;++i){
+                p[i]=Rnd.NextInt(0,i - 1);
             }
-            
+            for(int i=1;i<n;++i){
+                output<<p[i]+1<<" "<<i+1<<endl;
+            }
+
+            // generate permutation
+            std::vector<int> perm(n);
+            for(int i=0;i<n;++i){
+                perm[i]=i;
+            }
+            Rnd.Shuffle(perm.begin(),perm.end());
+            for(int i=0;i<n;++i){
+                output<<perm[i]+1<<" ";
+            }
+
             output.close();
         }
     }
