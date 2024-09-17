@@ -11,7 +11,5 @@ lang = "ja"
 
 # write constraints
 [constraints]
-    MIN_WHT = 0
+    MIN_WHT = 1
     MAX_WHT = 1000000000000
-    MIN_V = -1000000000000
-    MAX_V = 1000000000000
