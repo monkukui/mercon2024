@@ -16,6 +16,6 @@ markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 # MEMO: ここを変更する
 [constraints]
     MIN_NM = 1
-    MAX_NM = 2000
+    MAX_NM = 200000
     MIN_XY = 1
-    MAX_XY = 10000
+    MAX_XY = 1000000000
