@@ -1,4 +1,4 @@
-#!/Users/deadbeef/.pyenv/shims/python
+#!/usr/bin/python3
 
 import re
 import sys
