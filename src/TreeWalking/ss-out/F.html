@@ -113,7 +113,7 @@
     
     <div >
         <h2>F:Tree Walking</h2>
-<h3>ストーリー</h3>
+<h3>ストーリー (いらないかも)</h3>
 <p>※ この章を読み飛ばしても問題を解くことができます</p>
 <p>あなたは、メルカリハロを用いてスキマバイトを行います。あなたが住む町は木構造で表現され、あなたは頂点 0 に位置します。
 木の各頂点では一つのアルバイトが募集されており、バイト ID が定められています。</p>
@@ -121,65 +121,87 @@
 また、あなたは辞書順最小の列が好きです。行ったアルバイトのバイト id を順につなげた列 $(A_1, \ldots, \A_K)$ を辞書順最小にしたいです。</p>
 <p>あり得るバイト ID の列のうち、<em>辞書順最小</em> のものを求めてください。</p>
 <h3>問題</h3>
-<p>頂点数 $N$ の木が与えられます。$i$ $(1 \leq i \leq N - 1)$ 番目の辺は、頂点 $u_i$ と頂点 $v_i$ を双方向に連結します。
+<p>頂点に $1$ から $N$ の番号がついた $N$ 頂点の木が与えられます。木の $i$ $(1 \leq i \leq N - 1)$ 番目の辺は、頂点 $u_i$ と頂点 $v_i$ を双方向に連結します。
 また、各頂点 $i$ $(1 \leq i \leq N)$ には、整数 $X_i$ が割り当てられています。</p>
-<p>はじめに、変数 $c$, と数列 $A$ を以下のように初期化します。</p>
+<p>メル君は、頂点 $0$ 上に存在し、空の数列 $A = ()$ を持っています。
+操作を行えなくなるまで以下の操作を順に行います。</p>
 <ul>
-<li>$c \leftarrow 0$, $A \leftarrow []$</li>
-</ul>
-<p>次に、以下の操作を順番に、操作が行えなくなるまで繰り返し行います。</p>
-<p>操作:</p>
-<ul>
-<li>数列 $A$ の末尾に $X_{c}$ 追加するかを選択する (追加しないとき、数列 $A$ は変化しない)</li>
-<li>整数 $X_{c} \leftarrow -1$ とする</li>
-<li>$v$ に隣接する頂点 $u$ のうち、$X_{u} \neq -1$ でを満たす頂点を選び、$v \leftarrow u$ とする。そのような頂点 $u$ が存在しない場合、操作を終了する</li>
+<li>メル君が現在いる頂点番号を $c$ としたとき、数列 $A$ の末尾に $X_{c}$ 追加するかを選択する (追加しないとき、数列 $A$ は変化しない)</li>
+<li>$c$ に隣接する頂点 $u$ のうち、メル君がまだ訪れたことのない頂点を選び移動する。移動できる頂点が存在しないとき、操作を終了する。</li>
 </ul>
 <p>操作後に得られる長さ $K$ の数列 $A$ の中で、辞書順最小のものを出力してください。
 長さが $K$ となる数列 $A$ が存在しない場合、-1 を出力してください。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N K$
-$u_1 v_1$
+<pre class="input-format"><code class="language-input-format">$N$ $K$
+$u_1$ $v_1$
 $\vdots$
-$u_{N - 1} v_{N - 1}$
-$A_1 \ldots A_N$
+$u_{N - 1}$ $v_{N - 1}$
+$X_1$ \ldots $X_N$
 </code></pre>
 <h3>制約</h3>
 <ul>
 <li>$1 \leq N \leq 200{,}000$</li>
-<li>$1 \leq K \leq 200{,}000$</li>
-<li>$1 \leq A_{i} \leq 200{,}000$</li>
+<li>$1 \leq u_i \le v_i \leq N$</li>
+<li>与えられるグラフは木</li>
+<li>$1 \leq K \leq N$</li>
+<li>$1 \leq X_i \leq N$</li>
+<li>$X_1, \ldots, X_N$ はすべて異なる</li>
 <li>入力はすべて整数</li>
 </ul>
 <h3>出力形式</h3>
 <p>操作を繰り返す行い得られる長さ $K$ の数列のなかで、辞書順最小のものを一行に出力する。最後に改行すること。</p>
 <h3>入力例 1</h3>
-<pre class="input-format"><code class="language-input-format">3
-NAN
+<pre class="input-format"><code class="language-input-format">7 2
+1 2
+1 3
+2 4
+2 5
+4 6
+3 7
+1 5 4 3 2 6 7
 </code></pre>
 <h3>出力例 1</h3>
-<pre class="input-format"><code class="language-input-format">1
+<pre class="input-format"><code class="language-input-format">1 2
 </code></pre>
 <h3>入力例 2</h3>
-<pre class="input-format"><code class="language-input-format">3
-ANA
+<pre class="input-format"><code class="language-input-format">7 3
+1 2
+1 3
+2 4
+2 5
+4 6
+3 7
+1 5 4 3 2 6 7
 </code></pre>
 <h3>出力例 2</h3>
-<pre class="input-format"><code class="language-input-format">0
+<pre class="input-format"><code class="language-input-format">1 3 6
 </code></pre>
 <h3>入力例 3</h3>
-<pre class="input-format"><code class="language-input-format">12
-NAAAAAAAANAN
+<pre class="input-format"><code class="language-input-format">7 4
+1 2
+1 3
+2 4
+2 5
+4 6
+3 7
+1 5 4 3 2 6 7
 </code></pre>
 <h3>出力例 3</h3>
-<pre class="input-format"><code class="language-input-format">2
+<pre class="input-format"><code class="language-input-format">1 5 3 6
 </code></pre>
 <h3>入力例 4</h3>
-<pre class="input-format"><code class="language-input-format">50
-ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
+<pre class="input-format"><code class="language-input-format">7 5
+1 2
+1 3
+2 4
+2 5
+4 6
+3 7
+1 5 4 3 2 6 7
 </code></pre>
 <h3>出力例 4</h3>
-<pre class="input-format"><code class="language-input-format">14
+<pre class="input-format"><code class="language-input-format">-1
 </code></pre>
     </div>
     

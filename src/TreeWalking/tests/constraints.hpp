@@ -5,7 +5,3 @@
 
 const long long int MIN_N = 1;
 const long long int MAX_N = 200000;
-const long long int MIN_K = 1;
-const long long int MAX_K = 200000;
-const long long int MIN_A = 1;
-const long long int MAX_A = 200000;
