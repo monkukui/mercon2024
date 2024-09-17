@@ -608,6 +608,7 @@ int main() {
 
     vector<int> height(n, -1);
     auto efs = [&](auto &&f, int v, int p) -> void {
+        // if (v % 10 == 0) cerr << "v = " << v << endl;
         height[v] = 1;
         for (int u : graph[v]) {
             if (u == p) continue;
@@ -616,7 +617,7 @@ int main() {
         }
     };
     efs(efs, 0, -1);
-    dbg(height);
+    // cerr << "efs finish" << endl;
 
     if (height[0] < k) {
         cout << -1 << endl;

@@ -11,11 +11,11 @@
 
 using namespace std;
 
-const int num_of_type = 2;
-std::string case_type[num_of_type] = {"10_random_small","11_random_large"};
-int num_of_case[num_of_type] = {15,15};
-int min_n[num_of_type] = {1,MAX_N};
-int max_n[num_of_type] = {100,MAX_N};
+const int num_of_type = 3;
+std::string case_type[num_of_type] = {"10_random_small","11_random_large", "20_random_path_large"};
+int num_of_case[num_of_type] = {10,10, 10};
+int min_n[num_of_type] = {1,MAX_N, MAX_N / 10};
+int max_n[num_of_type] = {100,MAX_N, MAX_N / 10};
 
 XRand Rnd(283);
 
@@ -29,8 +29,17 @@ int main() {
 
             // generate tree
             std::vector<int> p(n);
-            for(int i=1;i<n;++i){
-                p[i]=Rnd.NextInt(0,i - 1);
+            if (typenum <= 1) {
+                for (int i = 1; i < n; ++i) {
+                    p[i] = Rnd.NextInt(0, i - 1);
+                }
+            } else {
+                for (int i = 1; i < n / 2; i++) {
+                    p[i] = i - 1;
+                }
+                for (int i = n / 2; i < n; i++) {
+                    p[i] = Rnd.NextInt(0, i - 1);
+                }
             }
 
             vector<vector<int>> graph(n);
