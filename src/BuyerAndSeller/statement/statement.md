@@ -31,11 +31,10 @@ $y_M$
 
 - 入力は全て整数
 - ${@constraints.MIN_NM} \leq N,M \leq {@constraints.MAX_NM}$
-- ${@constraints.MIN_XC} \leq x_i, y_j \leq {@constraints.MAX_XC}$
+- ${@constraints.MIN_XY} \leq x_i, y_j \leq {@constraints.MAX_XY}$
 
 ### 出力形式
 
 答えを整数として出力せよ。
 
 {@samples.all}
-
