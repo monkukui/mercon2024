@@ -14,8 +14,8 @@ using namespace std;
 const int num_of_type = 3;
 std::string case_type[num_of_type] = {"10_random_small","11_random_large", "20_random_path_large"};
 int num_of_case[num_of_type] = {10,10, 10};
-int min_n[num_of_type] = {1,MAX_N, MAX_N / 10};
-int max_n[num_of_type] = {100,MAX_N, MAX_N / 10};
+int min_n[num_of_type] = {1,MAX_N, MAX_N / 2};
+int max_n[num_of_type] = {100,MAX_N, MAX_N / 2};
 
 XRand Rnd(283);
 
@@ -60,7 +60,9 @@ int main() {
             efs(efs, 0, -1);
 
             int k = Rnd.NextInt(1, height[0] + 10);
-
+            if (typenum >= 2) {
+                k = height[0] / 2;
+            }
 
             output<<n<<" "<<k<<std::endl;
 
@@ -73,7 +75,7 @@ int main() {
             for(int i=0;i<n;++i){
                 perm[i]=i;
             }
-            Rnd.Shuffle(perm.begin(),perm.end());
+            // Rnd.Shuffle(perm.begin(),perm.end());
             for(int i=0;i<n;++i){
                 output<<perm[i]+1<<" ";
             }

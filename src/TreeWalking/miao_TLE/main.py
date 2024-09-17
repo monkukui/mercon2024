@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+
+import sys
+sys.setrecursionlimit(100000000)
+
 from collections import defaultdict
 
 n,k = map(int,input().split())
