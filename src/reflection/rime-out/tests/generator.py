@@ -1,4 +1,4 @@
-#!/Users/deadbeef/.pyenv/shims/python
+#!/usr/bin/python3
 
 """
 This generator generates the follwoing cases:
