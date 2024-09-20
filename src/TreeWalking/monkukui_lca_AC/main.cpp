@@ -576,10 +576,13 @@ struct LowestCommonAncestor {
 int main() {
     int n, k; cin >> n >> k;
     vector<vector<int>> graph(n);
+    vector<int> deg(n, 0);
     for (int i = 0; i < n - 1; i ++) {
         int a, b; cin >> a >> b;
         a--;
         b--;
+        deg[a]++;
+        deg[b]++;
         graph[a].emplace_back(b);
         graph[b].emplace_back(a);
     }
@@ -589,15 +592,31 @@ int main() {
     }
 
     vector<int> height(n, -1);
-    auto efs = [&](auto &&f, int v, int p) -> void {
-        height[v] = 1;
-        for (int u : graph[v]) {
-            if (u == p) continue;
-            f(f, u, v);
-            chmax(height[v], height[u] + 1);
+    {
+        queue<int> que;
+        vector<bool> used(n, false);
+        for (int i = 0; i < n; i++) {
+            if (deg[i] == 1 and i != 0) {
+                que.push(i);
+                height[i] = 1;
+                used[i] = true;
+            }
         }
-    };
-    efs(efs, 0, -1);
+        while (!que.empty()) {
+            int v = que.front();
+            que.pop();
+            for (int u: graph[v]) {
+                if (used[u]) continue;
+                height[u] = max(height[u], height[v] + 1);
+                deg[u]--;
+                if (deg[u] == 1 and u != 0) {
+                    used[u] = true;
+                    que.push(u);
+                }
+            }
+        }
+    }
+
 
     if (height[0] < k) {
         cout << -1 << endl;
@@ -611,8 +630,9 @@ int main() {
 
 
     LowestCommonAncestor lca(graph);
+    cerr << "befour build" << endl;
     lca.build();
-
+    cerr << "after build" << endl;
 
     set<pair<int, int>> candidates;
     // height[v] >= k ならば、v が候補

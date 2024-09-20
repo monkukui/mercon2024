@@ -576,10 +576,13 @@ struct LowestCommonAncestor {
 int main() {
     int n, k; cin >> n >> k;
     vector<vector<int>> graph(n);
+    vector<int> deg(n, 0);
     for (int i = 0; i < n - 1; i ++) {
         int a, b; cin >> a >> b;
         a--;
         b--;
+        deg[a]++;
+        deg[b]++;
         graph[a].emplace_back(b);
         graph[b].emplace_back(a);
     }
@@ -590,16 +593,31 @@ int main() {
 
     vector<int> height(n, -1);
     vector<int> parent(n, -1);
-    auto efs = [&](auto &&f, int v, int p) -> void {
-        height[v] = 1;
-        for (int u : graph[v]) {
-            if (u == p) continue;
-            parent[u] = v;
-            f(f, u, v);
-            chmax(height[v], height[u] + 1);
+    {
+        queue<int> que;
+        vector<bool> used(n, false);
+        for (int i = 0; i < n; i++) {
+            if (deg[i] == 1 and i != 0) {
+                que.push(i);
+                height[i] = 1;
+                used[i] = true;
+            }
         }
-    };
-    efs(efs, 0, -1);
+        while (!que.empty()) {
+            int v = que.front();
+            que.pop();
+            for (int u: graph[v]) {
+                if (used[u]) continue;
+                height[u] = max(height[u], height[v] + 1);
+                deg[u]--;
+                if (deg[u] == 1 and u != 0) {
+                    used[u] = true;
+                    que.push(u);
+                }
+            }
+        }
+    }
+
 
     if (height[0] < k) {
         cout << -1 << endl;
@@ -621,7 +639,10 @@ int main() {
             }
             for (auto nxt : graph[v]) {
                 if (nxt == p) continue;
-                if (height[nxt] >= k and parent[v] != nxt) f(f, nxt, v);
+                if (height[nxt] >= k and parent[v] != nxt) {
+                    parent[nxt] = v;
+                    f(f, nxt, v);
+                }
             }
             return;
         };

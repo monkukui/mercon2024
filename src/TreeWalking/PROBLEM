@@ -14,5 +14,5 @@ problem(
     wiki_name="問題/Tree Walk",
     assignees=["tubuann", "wakuwinmail"],
     need_custom_judge=False,
-    # reference_solution="",
+    reference_solution="monkukui_TLE",
 )
