@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 
+const int inf = 1e9;
+
+
 int main() {
 
     int n, x; cin >> n >> x;
@@ -33,13 +36,15 @@ int main() {
         for (int j2 = 0; j2 < 2 * x; j2++) {
             for (int j3 = 0; j3 < 2 * x; j3++) {
                 if (!dp[n][j1][j2][j3]) continue;
+                cerr << "j1: " << j1 << " j2: " << j2 << " j3: " << j3 << endl;
 
                 int cost = 0;
                 bool valid = true;
                 int sum = 0;
-                for (auto amount : [j1, j2, j3]) {
+                for (auto amount : {j1, j2, j3}) {
                     sum += amount;
                     if (sum < x) {
+                        // continue;
                         valid = false;
                         break;
                     }
@@ -47,7 +52,12 @@ int main() {
                     sum -= x;
                 }
 
-                if (valid) chmin(ans, cost);
+                if (valid) {
+                    if (ans > cost) {
+                        cerr << "j1: " << j1 << " j2: " << j2 << " j3: " << j3 << " cost: " << cost << endl;
+                        ans = cost;
+                    }
+                }
             }
         }
     }
