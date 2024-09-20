@@ -1,66 +1,73 @@
-// #include "atcoder/all"
-#include <iostream> // cout, endl, cin
-#include <string> // string, to_string, stoi
-#include <vector> // vector
-#include <algorithm> // min, max, swap, sort, reverse, lower_bound, upper_bound
-#include <utility> // pair, make_pair
-#include <tuple> // tuple, make_tuple
-#include <cstdint> // int64_t, int*_t
-#include <cstdio> // printf
-#include <map> // map
-#include <queue> // queue, priority_queue
-#include <set> // set
-#include <stack> // stack
-#include <deque> // deque
-#include <unordered_map> // unordered_map
-#include <unordered_set> // unordered_set
-#include <bitset> // bitset
-#include <cctype> // isupper, islower, isdigit, toupper, tolower
-#include <iomanip> // setprecision
-#include <complex> // complex
-#include <math.h>
-#include <functional>
-#include <cassert>
+#include <iostream>
+#include <vector>
 using namespace std;
-// using namespace atcoder;
-using ll = long long;
-using P = pair<ll,ll>;
-constexpr ll INF = 1e15;
-constexpr ll LLMAX = 9223372036854775807;
-constexpr int inf = 1e9;
-// constexpr ll mod = 1000000007;
-constexpr ll mod = 998244353;
-// 右下左上
-const int dx[8] = {1, 0, -1, 0,1,1,-1,-1};
-const int dy[8] = {0, 1, 0, -1,1,-1,1,-1};
-template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
-template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
-#define eol "\n"
 
-// ---------------------------------------------------------------------------
+int main() {
 
+    int n, x; cin >> n >> x;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
+    vector<vector<vector<vector<bool>>>> dp(n + 1, vector<vector<vector<bool>>>(2 * x, vector<vector<bool>>(2 * x, vector<bool>(2 * x, false))));
+    dp[0][0][0][0] = true;
+    for (int i = 0; i < n; i++) {
+        for (int j1 = 0; j1 < 2 * x; j1++) {
+            for (int j2 = 0; j2 < 2 * x; j2++) {
+                for (int j3 = 0; j3 < 2 * x; j3++) {
+                    if (!dp[i][j1][j2][j3]) continue;
+                    // 取らない
+                    dp[i + 1][j1][j2][j3] = true;
 
-int main(){
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-  int N;
-  cin >> N;
-  string S;
-  cin >> S;
-  vector<pair<char,int>> R;
-  R.emplace_back(S[0],1);
-  for(int i=1; i<N; i++){
-      if(R.back().first == S[i]){
-          R.back().second++;
-      }else{
-          R.emplace_back(S[i],1);
-      }
-  }
-  int ans = 0;
-  for(int i=1; i+1<R.size(); i++){
-      if(R[i].first == 'A') ans++;
-  }
-  cout << ans << eol;
-  return 0;
+                    if (j1 + a[i] < 2 * x) dp[i + 1][j1 + a[i]][j2][j3] = true;
+                    if (j2 + a[i] < 2 * x) dp[i + 1][j1][j2 + a[i]][j3] = true;
+                    if (j3 + a[i] < 2 * x) dp[i + 1][j1][j2][j3 + a[i]] = true;
+                }
+            }
+        }
+    }
+
+    int ans = inf;
+    for (int j1 = 0; j1 < 2 * x; j1++) {
+        for (int j2 = 0; j2 < 2 * x; j2++) {
+            for (int j3 = 0; j3 < 2 * x; j3++) {
+                if (!dp[n][j1][j2][j3]) continue;
+
+                int cost = 0;
+                bool valid = true;
+                int sum = 0;
+                for (auto amount : [j1, j2, j3]) {
+                    sum += amount;
+                    if (sum < x) {
+                        valid = false;
+                        break;
+                    }
+                    cost += (sum - x);
+                    sum -= x;
+                }
+
+                if (valid) chmin(ans, cost);
+            }
+        }
+    }
+
+    ans = -ans;
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += a[i];
+    }
+    for (int j = 1; j <= 4; j++) {
+        if (sum < x) {
+            ans += j * sum;
+            break;
+        } else {
+            ans += j * x;
+            sum -= x;
+        }
+    }
+
+    cout << ans << endl;
+
+    return 0;
 }
