@@ -18,9 +18,9 @@ for pattern in patterns:
     cur_res = max_sum
     cur_min_sum = 0
     cur_a = a.copy()
-    for i in range(len(pattern)):
-            
-        cur_sum = pattern[i]*x - cur_min_sum # the target sum in this round
+    pre_rank = 0
+    for p in range(len(pattern)):
+        cur_sum = pattern[p]*x - cur_min_sum # the target sum in this round
         if cur_sum <0:
             continue
         dp = [float('inf') for _ in range(max_sum + 1)]
@@ -36,7 +36,7 @@ for pattern in patterns:
 
         cur_min_sum = -1
         cur_chosen = []
-        for i in range(x, max_sum+1):
+        for i in range(cur_sum, max_sum+1):
             if dp[i] < float('inf'):
                 # print(dp[i], end=' ')
                 # print(*chosen[i])
@@ -55,7 +55,9 @@ for pattern in patterns:
                 next_a.append(cur_a[i])
         cur_a = next_a
         # print(cur_a)
-        cur_res += sum(cur_a)
+        # print(pattern[p], pre_rank)
+        cur_res += sum(cur_a) * (pattern[p] - pre_rank)
+        pre_rank = pattern[p]
 
     candidates.append(cur_res)
 
