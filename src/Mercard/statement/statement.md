@@ -25,7 +25,7 @@ $A_1\ A_2\ \dots\ A_N$
 
 - 入力は全て整数
 - ${@constraints.MIN_NX} \leq N, X \leq {@constraints.MAX_NX}$
-- $1\leq A_i \leq X $
+- ${@constraints.MIN_A} \leq A_i \leq X$
 
 
 ### 出力形式
