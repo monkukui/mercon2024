@@ -5,7 +5,7 @@ https://jp-news.mercari.com/contents/10969
 参考:
 https://atcoder.jp/contests/ABC203/tasks/ABC203_F
 https://atcoder.jp/contests/ABC209/tasks/ABC209_E
-メルカードを使って商品iを購入すると、所持してる **ポイント** が次の通り増加します。
+メルカードを使って商品iを購入すると、**ポイント**が次の通り増加します。
 今まで購入した商品の金額の合計がS円のとき、商品iを購入するとポイントが A_i * (0.01 + min(0.04,  \lfloor S / X \rfloor )) 増加する。ただし商品A_iを購入するとき、  **今まで購入した商品に商品A_iは含まれません** 。
 参考:
 ポイントの表記とか https://atcoder.jp/contests/ABC280/tasks/ABC280_F
