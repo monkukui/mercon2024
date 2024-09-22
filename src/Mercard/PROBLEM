@@ -10,9 +10,9 @@ pid='A'
 problem(
     time_limit=1.0,
     id=pid,
-    title=pid+": sample-ナンってナン回言った？",
-    wiki_name="問題/ナンってナン回言った？",
-    assignees=["tubuann", "wakuwinmail"],
+    title=pid+": メルカード",
+    wiki_name="問題/メルカード",
+    assignees=["kuma"],
     need_custom_judge=False,
     # reference_solution="",
 )

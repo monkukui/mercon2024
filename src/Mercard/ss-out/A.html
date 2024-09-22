@@ -112,54 +112,47 @@
 <body>
     
     <div >
-        <h2>A:ナンってナン回言った？</h2>
+        <h2>メルカード</h2>
 <h3>問題</h3>
-<p>HCPC に所属している pitsu 君はサークルの活動後にカレー屋さんに行きました。そこでは張り紙にこんなことが書いてありました。</p>
-<p>「ナンおかわり自由！」</p>
-<p>これを見た waku 君は</p>
-<p>「ナンと言った数だけナンをおかわりしよう」</p>
-<p>と提案しました。pitsu 君の発言が与えられるので、pitsu 君がナンと言った回数を求めてください。</p>
-<p>具体的には、文字列 $t_1\ldots t_m$ がナンであるとは、$m\ge 3$ かつ $t_1=t_m=\ $<code>N</code>$,\ t_i=\ $<code>A</code>$\ (i=2,\ldots,m-1)$ をみたすことを言います。<code>A</code> と <code>N</code> のみからなる長さ $N$ の文字列 $S$ が与えられるので、$S$ の連続する部分文字列であってナンであるものの数を数えてください。</p>
+<p>メルカードとは、メルカリから生まれたおトクなクレジットカードのことです。あなたはメルカードを使って $N$ 個の商品を購入しようと考えており、商品 $i$ の値段は $A_i$ 円です。
+メルカードを使って商品を購入すると購入した商品の値段の $1$ 〜 $4$ % が <strong>ポイント</strong> に加算されます。
+より厳密には、メルカードを使って商品 $i$ を購入すると、ポイントが次の通り増加します。</p>
+<ul>
+<li>今まで購入した商品の値段の合計が $S$ 円のとき、商品 $i$ を購入するとポイントが $A_i \times (1 + min(3, \lfloor S / X \rfloor)) \times 0.01$ 増加する。ただし商品 $A_i$ を購入するとき、 <strong>「今まで購入した商品」に商品 $A_i$ は含まれません</strong> 。</li>
+</ul>
+<p>購入する商品の順番を自由に選べるとき、$N$ 個の商品を購入した状態で所持しているポイントの最大値を求めてください。</p>
+<h3>注釈</h3>
+<ul>
+<li>$\lfloor Y \rfloor$ は、 $Y$ の小数点以下を切り捨てた値を指します。</li>
+<li>この問題文のメルカードの説明は一部実際のメルカードの説明とは異なります。</li>
+</ul>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N$
-$S$
+<pre class="input-format"><code class="language-input-format">$N\ X$
+$A_1\ A_2\ \dots\ A_N$
 </code></pre>
 <h3>制約</h3>
 <ul>
-<li>$1 \leq N \leq 2{,}000$</li>
-<li>$N$は整数</li>
-<li>$S$ は <code>N</code>, <code>A</code> のみからなる長さ $N$ の文字列である</li>
+<li>入力は全て整数</li>
+<li>$1 \leq N, X \leq 300$</li>
+<li>$1 \leq A_i \leq X$</li>
 </ul>
 <h3>出力形式</h3>
-<p>$S$ の部分文字列であってナンであるものの数を一行に出力する。最後に改行すること。</p>
+<p>答えを $Y$ としたとき <strong>$Y \times 100$ を整数として出力せよ</strong>。</p>
 <h3>Sample Input 1</h3>
-<pre class="input-format"><code class="language-input-format">3
-NAN
+<pre class="input-format"><code class="language-input-format">5 1
+1 1 1 1 1
 </code></pre>
 <h3>Sample Output 1</h3>
-<pre class="input-format"><code class="language-input-format">1
+<pre class="input-format"><code class="language-input-format">14
 </code></pre>
+<p>全ての商品の値段が同じなので商品をどの順番に買ってもポイントは最大になり、 $5$ 個の商品を全て買ったときの所持ポイントは $0.01 + 0.02 + 0.03 + 0.04 + 0.04 = 0.14$ です。 $5$ 個目の商品を買うときに増加するポイントが $A_i \times (1 + min(3, \lfloor S / X \rfloor)) \times 0.01 = 1 * (1 + min(3, \lfloor 4 / 1 \rfloor)) \times 0.01 = 0.04$ になることに注意してください。</p>
 <h3>Sample Input 2</h3>
-<pre class="input-format"><code class="language-input-format">3
-ANA
+<pre class="input-format"><code class="language-input-format">6 5
+5 1 2 2 1 1
 </code></pre>
 <h3>Sample Output 2</h3>
-<pre class="input-format"><code class="language-input-format">0
-</code></pre>
-<h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">12
-NAAAAAAAANAN
-</code></pre>
-<h3>Sample Output 3</h3>
-<pre class="input-format"><code class="language-input-format">2
-</code></pre>
-<h3>Sample Input 4</h3>
-<pre class="input-format"><code class="language-input-format">50
-ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
-</code></pre>
-<h3>Sample Output 4</h3>
-<pre class="input-format"><code class="language-input-format">14
+<pre class="input-format"><code class="language-input-format">21
 </code></pre>
     </div>
     
