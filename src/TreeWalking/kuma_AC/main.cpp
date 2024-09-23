@@ -1,3 +1,7 @@
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("Ofast")
+
 #include <bits/stdc++.h>
 #define INF 500000000
 #define ll long long
@@ -17,10 +21,10 @@ using namespace std;
   //et.par.at(i)
     //頂点iの親、rootの親は-1
 struct euler_tour {
-  vector<ll> in, out, depth, par;
+  vector<ll> in, out, depth, par, child_num;
   ll dist = 0;
   euler_tour(vector<vector<ll>> &connection, ll s) {
-    in = out = depth = par = vector<ll>(connection.size(), -1);
+    in = out = depth = par = child_num = vector<ll>(connection.size(), -1);
     dfs(connection, s);
   }
   void dfs(vector<vector<ll>> &connection, ll now) {
@@ -34,6 +38,12 @@ struct euler_tour {
       depth.at(next) = depth.at(now) + 1;
       par.at(next) = now;
       dfs(connection, next);
+      if (child_num.at(next) + 1 > child_num.at(now)) {
+        child_num.at(now) = child_num.at(next) + 1;
+      }
+    }
+    if (child_num.at(now) < 1) {
+      child_num.at(now) = 1;
     }
     out.at(now) = dist;
     dist += 1;
@@ -119,5 +129,55 @@ int main() {
     connection.at(V).push_back(U);
   }
   segment_tree seg(2 * N);
-
+  euler_tour et(connection, 0);
+  vector<vector<ll>> num_edge(N + 1);
+  for (ll i = 0; i < N; ++i) {
+    num_edge.at(et.child_num.at(i)).push_back(i);
+  }
+  vector<ll> X(N);
+  map<ll, ll> X_index;
+  for (ll i = 0; i < N; ++i) {
+    cin >> X.at(i);
+    X_index[X.at(i)] = i;
+  }
+  for (ll i = K; i <= N; ++i) {
+    for (ll j = 0; j < num_edge.at(i).size(); ++j) {
+      ll edge = num_edge.at(i).at(j);
+      seg.update(et.in.at(edge), X.at(edge));
+      seg.update(et.out.at(edge), X.at(edge));
+    }
+  }
+  vector<ll> ans;
+  ll now = -1;
+  while (true) {
+    for (ll i = 0; i < num_edge.at(K - (ll)ans.size()).size(); ++i) {
+      ll edge = num_edge.at(K - ans.size()).at(i);
+      seg.update(et.in.at(edge), X.at(edge));
+      seg.update(et.out.at(edge), X.at(edge));
+    }
+    ll min_X;
+    if (now == -1) {
+      min_X = seg.query(et.in.at(0), et.out.at(0));
+    }
+    else {
+      min_X = seg.query(et.in.at(now) + 1, et.out.at(now));
+    }
+    if (min_X == INF) {
+      cout << -1 << endl;
+      return 0;
+    }
+    ans.push_back(min_X);
+    now = X_index[min_X];
+    if (ans.size() == K) {
+      break;
+    }
+  }
+  for (ll i = 0; i < ans.size(); ++i) {
+    cout << ans.at(i);
+    if (i != (ll)ans.size() - 1) {
+      cout << ' ';
+    }
+  }
+  cout << endl;
+  return 0;
 }
