@@ -1,3 +1,7 @@
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("Ofast")
+
 #include <bits/stdc++.h>
 #define INF 500000000
 #define ll long long
@@ -146,7 +150,7 @@ int main() {
   vector<ll> ans;
   ll now = -1;
   while (true) {
-    for (ll i = 0; i < num_edge.at(K - ans.size()).size(); ++i) {
+    for (ll i = 0; i < num_edge.at(K - (ll)ans.size()).size(); ++i) {
       ll edge = num_edge.at(K - ans.size()).at(i);
       seg.update(et.in.at(edge), X.at(edge));
       seg.update(et.out.at(edge), X.at(edge));
