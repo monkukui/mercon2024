@@ -24,7 +24,8 @@ $A_1\ A_2\ \dots\ A_N$
 ### 制約
 
 - 入力は全て整数
-- ${@constraints.MIN_NX} \leq N, X \leq {@constraints.MAX_NX}$
+- ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
+- ${@constraints.MIN_X} \leq X \leq {@constraints.MAX_X}$
 - ${@constraints.MIN_A} \leq A_i \leq X$
 
 

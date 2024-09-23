@@ -16,7 +16,7 @@ void random_max_NX(int casenum) {
     std::string file_name="10_random_max_NX"+std::to_string(casenum)+".in";
     std::ofstream output(file_name);
 
-    int N = 300, X = 300;
+    int N = MAX_N, X = MAX_X;
     output<< N << ' ' << X << std::endl;
     for (int i = 0; i < N; i++) {
         int A =Rnd.NextInt(MIN_A, X);

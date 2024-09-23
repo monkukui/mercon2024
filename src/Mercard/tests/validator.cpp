@@ -8,9 +8,9 @@ using namespace std;
 int main(){
     registerValidation();
 
-    int N = inf.readInt(MIN_NX, MAX_NX);
+    int N = inf.readInt(MIN_N, MAX_N);
     inf.readSpace();
-    int X = inf.readInt(MIN_NX, MAX_NX);
+    int X = inf.readInt(MIN_X, MAX_X);
     inf.readEoln();
 
     for (int i = 0; i < N; i++) {
