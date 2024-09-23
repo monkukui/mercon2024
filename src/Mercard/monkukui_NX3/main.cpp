@@ -31,53 +31,44 @@ int main() {
         }
     }
 
-    int ans = inf;
+    int ans = 0;
+    int sum_a = 0;
+    for (int i = 0; i < n; i++) sum_a += a[i];
+
     for (int j1 = 0; j1 < 2 * x; j1++) {
         for (int j2 = 0; j2 < 2 * x; j2++) {
             for (int j3 = 0; j3 < 2 * x; j3++) {
                 if (!dp[n][j1][j2][j3]) continue;
-                cerr << "j1: " << j1 << " j2: " << j2 << " j3: " << j3 << endl;
 
-                int cost = 0;
-                bool valid = true;
-                int sum = 0;
-                for (auto amount : {j1, j2, j3}) {
-                    sum += amount;
-                    if (sum < x) {
-                        // continue;
-                        valid = false;
-                        break;
+                bool is_valid = true;
+                vector<int> b = {j1, j2, j3, sum_a - j1 - j2 - j3};
+
+                int amount = 0;
+                for (int i = 0; i < 4; i++) {
+                    int e = b[i];
+                    amount += e;
+                    if (e < x) {
+                        // 後続で一つでも 1 以上があるとだめ
+                        for (int j = i + 1; j < 4; j++) {
+                            if (b[j] > 0) {
+                                is_valid = false;
+                                break;
+                            }
+                        }
+                        if (!is_valid) break;
                     }
-                    cost += (sum - x);
-                    sum -= x;
+                    amount -= x;
                 }
 
-                if (valid) {
-                    if (ans > cost) {
-                        cerr << "j1: " << j1 << " j2: " << j2 << " j3: " << j3 << " cost: " << cost << endl;
-                        ans = cost;
-                    }
-                }
+                if (!is_valid) continue;
+                int point = j1 * 1 + j2 * 2 + j3 * 3 + (sum_a - j1 - j2 - j3) * 4;
+                if (ans < point) ans = point;
             }
         }
     }
 
-    ans = -ans;
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        sum += a[i];
-    }
-    for (int j = 1; j <= 4; j++) {
-        if (sum < x) {
-            ans += j * sum;
-            break;
-        } else {
-            ans += j * x;
-            sum -= x;
-        }
-    }
-
     cout << ans << endl;
+
 
     return 0;
 }
