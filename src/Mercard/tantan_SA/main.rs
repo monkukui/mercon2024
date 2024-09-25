@@ -106,12 +106,12 @@ fn simulated_annealing(
             output.a.swap(i, j);
         }
 
-        if best_score > now_score {
+        if best_score < now_score {
             best_score = now_score;
             // best_out = output.clone();
         }
     }
-    now_score
+    best_score
 }
 
 fn compute_score(input: &Input, out: &Output) -> i64 {
