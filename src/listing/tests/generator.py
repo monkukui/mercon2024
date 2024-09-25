@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import itertools
 import random
 
@@ -10,12 +12,10 @@ ON_SALE = "on_sale"
 
 
 class TestCaseGenerator:
-    def __init__(self, seed: int):
+    def __init__(self, seed):
         self.random = random.Random(seed)
 
-    def generate(
-        self, n: int | None, is_overrange: bool, is_underrange: bool
-    ) -> tuple[int, int, list[tuple[int, str]], bool]:
+    def generate(self, n, is_overrange, is_underrange):
         if n is None:
             n = self.random.randint(MIN_N, MAX_N)
 
