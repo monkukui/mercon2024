@@ -63,12 +63,14 @@ if __name__ == "__main__":
     import os
 
     variables = dict(
-        n=[MIN_N, MAX_N, None], is_overrange=[False, True], is_underrange=[False, True]
+        n=[MIN_N, MAX_N, 10, 100, None],
+        is_overrange=[False, True],
+        is_underrange=[False, True],
     )
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--seed", type=int, default=0)
-    parser.add_argument("-n", "--num-tests", type=int, default=600)
+    parser.add_argument("-n", "--num-tests", type=int, default=20)
     parser.add_argument("-o", "--output-dir", default=".")
     parser.add_argument("-p", "--prefix", default="01_test_")
     args = parser.parse_args()
