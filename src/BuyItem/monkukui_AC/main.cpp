@@ -530,7 +530,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int u, v, h; cin >> u >> v >> h;
         st.insert(make_pair(u, v));
-        if (h == mp[v]) {
+        if (h == mp[v].first) {
             cout << "wa" << endl;
             return 1;
         }
