@@ -24,27 +24,6 @@ MIN_Z = 0
 MAX_Z = 10**9
 
 
-# NとMが異なるケースを生成する(使わない)
-def generate_random_case():
-    N = random.randint(MIN_N, MAX_N)
-    M = random.randint(MIN_M, MAX_M)
-
-    entries = []
-    for _ in range(N):
-        start_or_end = random.choice(["start", "end"])
-        if start_or_end == "start":
-            x = MIN_XY
-            y = random.randint(MIN_XY, MAX_XY)
-        else:
-            x = random.randint(MIN_XY, MAX_XY)
-            y = MAX_XY
-        entries.append((x, y))
-
-    queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
-
-    return N, M, entries, queries
-
-
 # NとMが同じケースを生成する, x, y, zは一様ランダム
 def generate_random_case_N_M_equal_random():
     small = random.randint(10 * 7, 10 * 8)
@@ -53,15 +32,11 @@ def generate_random_case_N_M_equal_random():
 
     entries = []
     for _ in range(N):
-        start_or_end = random.choice(["start", "end"])
-        if start_or_end == "start":
-            x = MIN_XY
-            y = random.randint(MIN_XY, MAX_XY)
-        else:
-            x = random.randint(MIN_XY, MAX_XY)
-            y = MAX_XY
+        a = random.randint(MIN_XY, MAX_XY)
+        b = random.randint(MIN_XY, MAX_XY)
+        x = min(a, b)
+        y = max(a, b)
         entries.append((x, y))
-
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
 
     return N, M, entries, queries
@@ -77,15 +52,10 @@ def generate_random_case_N_M_equal_center():
 
     entries = []
     for _ in range(N):
-        start_or_end = random.choice(["start", "end"])
-        if start_or_end == "start":
-            x = MIN_XY
-            y = int(random.gauss(XY_CENTER, SIGMA))
-            y = max(MIN_XY, min(y, MAX_XY))
-        else:
-            x = int(random.gauss(XY_CENTER, SIGMA))
-            x = max(MIN_XY, min(x, MAX_XY))
-            y = MAX_XY
+        a = int(random.gauss(XY_CENTER, SIGMA))
+        b = int(random.gauss(XY_CENTER, SIGMA))
+        x = min(a, b)
+        y = max(a, b)
         entries.append((x, y))
 
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
@@ -101,13 +71,10 @@ def generate_random_case_N_small_M_big():
 
     entries = []
     for _ in range(N):
-        start_or_end = random.choice(["start", "end"])
-        if start_or_end == "start":
-            x = MIN_XY
-            y = random.randint(MIN_XY, MAX_XY)
-        else:
-            x = random.randint(MIN_XY, MAX_XY)
-            y = MAX_XY
+        a = random.randint(MIN_XY, MAX_XY)
+        b = random.randint(MIN_XY, MAX_XY)
+        x = min(a, b)
+        y = max(a, b)
         entries.append((x, y))
 
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
@@ -123,13 +90,10 @@ def generate_random_case_N_big_M_small():
 
     entries = []
     for _ in range(N):
-        start_or_end = random.choice(["start", "end"])
-        if start_or_end == "start":
-            x = MIN_XY
-            y = random.randint(MIN_XY, MAX_XY)
-        else:
-            x = random.randint(MIN_XY, MAX_XY)
-            y = MAX_XY
+        a = random.randint(MIN_XY, MAX_XY)
+        b = random.randint(MIN_XY, MAX_XY)
+        x = min(a, b)
+        y = max(a, b)
         entries.append((x, y))
 
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
@@ -147,12 +111,11 @@ def write_case_to_file(filename, N, M, entries, queries):
 
 
 # テストケースの計画
-# 合計30ケース
-# -  2ケース / サンプル
+# -  3ケース / サンプル
 # - 10ケース / NとMが同じくらい & ランダム
 # - 10ケース / NとMが同じくらい & 中心にたくさんあるパターン
-# -  4ケース / Nが少ない・Mが多い & ランダム
-# -  4ケース / Mが少ない・Nが多い & ランダム
+# - 10ケース / Nが少ない・Mが多い & ランダム
+# - 10ケース / Mが少ない・Nが多い & ランダム
 
 if __name__ == "__main__":
     output_dir = "./tests"
@@ -171,16 +134,16 @@ if __name__ == "__main__":
         filename = os.path.join(output_dir, f"20_N_M_equal_center_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
-    # -  4ケース / Nが少ない・Mが多い & ランダム
-    for i in range(4):
+    # -  10ケース / Nが少ない・Mが多い & ランダム
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_small_M_big()
         filename = os.path.join(output_dir, f"30_N_small_M_big_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
-    # -  4ケース / Mが少ない・Nが多い & ランダム
-    for i in range(4):
+    # -  10ケース / Mが少ない・Nが多い & ランダム
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_big_M_small()
         filename = os.path.join(output_dir, f"40_N_big_M_small_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
-    print(f"10 cases have been written to the '{output_dir}' directory.")
+    print(f"40 cases have been written to the '{output_dir}' directory.")
