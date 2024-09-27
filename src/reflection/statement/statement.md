@@ -19,13 +19,13 @@ $s_x$ $s_y$
 
 - 入力は全て整数
 - ${@constraints.MIN_WHT} \leq W, H, T \leq {@constraints.MAX_WHT}$
-- ${@constraints.MIN_S} \leq s_y \leq H$
-- ${@constraints.MIN_S} \leq s_x \leq W$
+- ${@constraints.MIN_WHT} \leq s_y \leq H$
+- ${@constraints.MIN_WHT} \leq s_x \leq W$
 
 
 ### 出力形式
 
-答えの座標を $ans_x ans_y$ として出力せよ。
+答えの座標を $ans_x$ $ans_y$ を空白区切りで一行に出力せよ。
 なお、答えが $32$ bit 整数に収まらないことがある事に注意せよ。
 
 {@samples.all}
