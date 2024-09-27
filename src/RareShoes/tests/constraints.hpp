@@ -3,5 +3,9 @@
 
 #pragma once
 
-const long long int MIN_N = 1;
-const long long int MAX_N = 2000;
+const long long int MIN_NM = 1;
+const long long int MAX_NM = 200000;
+const long long int MIN_XY = 0;
+const long long int MAX_XY = 1000000000;
+const long long int MIN_Z = 0;
+const long long int MAX_Z = 1000000000;
