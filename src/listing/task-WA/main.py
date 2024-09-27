@@ -10,7 +10,7 @@ for i in range(n):
 
 
 def solve():
-    lb, ub = -1, 10000000
+    lb, ub = -1, 1000000
     for i in range(n):
         if s[i] == "sold_out":
             lb = max(lb, c[i])
