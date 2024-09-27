@@ -1,0 +1,23 @@
+# choose mode ('docs' or 'local')
+mode = "local"
+
+# problem id (it is used for the name of output html file)
+id = "D"
+
+# pato to a statement, output params
+params_path = "./tests/constraints.hpp"
+lang = "ja"
+
+[[statements]]
+path = "./statement/statement.md"
+markdown_extensions = ["md_in_html", "tables", "fenced_code"]
+
+# write constraints
+# MEMO: ここを変更する
+[constraints]
+    MIN_NM = 1
+    MAX_NM = 200000
+    MIN_XY = 0
+    MAX_XY = 1000000000
+    MIN_Z = 0
+    MAX_Z = 1000000000
