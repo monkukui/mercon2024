@@ -19,7 +19,7 @@ int main(){
         ans_x = (s_x+t) % w;
     }
 
-    cout << (s_y+t) / h % 2 << endl;
+    // cout << (s_y+t) / h % 2 << endl;
     if ((s_y+t) / h % 2) {
         ans_y = h - (s_y+t) % h;
         //cout << "amaru y" << endl;
