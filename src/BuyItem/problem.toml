@@ -13,10 +13,10 @@ lang = "ja"
 # write constraints
 [constraints]
     MIN_N = 1
-    MAX_N = 500000
+    MAX_N = 200000
     MIN_U = 1
-    MAX_U = 500000
+    MAX_U = 1000000000
     MIN_V = 1
-    MAX_V = 500000
+    MAX_V = 1000000000
     MIN_H = 1
     MAX_H = 100
