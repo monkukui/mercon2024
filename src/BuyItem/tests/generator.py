@@ -8,9 +8,12 @@
 
 import random
 
-MAX_LARGE = 500000
+MAX_LARGE = 200000
 MAX_SMALL = 1000
 MAX_H = 100
+MAX_U = 1000000000
+MAX_V = 1000000000
+
 
 
 def write_or_print(file_name, test_case, write_to_file):
@@ -68,6 +71,6 @@ random.seed(0)
 # 21, 22 is hand-crafted
 
 # large cases
-# for i in range(22, 25):
+# for i in range(22, 26):
 #     N = random.randint(MAX_LARGE-100, MAX_LARGE)
-#     generate_random_test_case(i+1, N, MAX_LARGE, MAX_LARGE, MAX_H, is_sample=False, write_to_file=True)
+#     generate_random_test_case(i+1, N, MAX_LARGE, MAX_U, MAX_V, is_sample=False, write_to_file=True)
