@@ -6,13 +6,13 @@
 ##   id: The problem ID (typically starts from A) used to order problems.
 ##   time_limit: The time limit of this problem in seconds.
 
-pid='A'
+pid = "A"
 problem(
-    time_limit=3.0,
+    time_limit=1.0,
     id=pid,
-    title=pid+": Listing",
-    wiki_name="問題/Listing",
-    assignees=["tubuann", "wakuwinmail"],
+    title=pid + ": ",
+    wiki_name="問題/出品",
+    assignees=["naberyo"],
     need_custom_judge=False,
-    #reference_solution="monkukui_TLE",
+    # reference_solution="",
 )
