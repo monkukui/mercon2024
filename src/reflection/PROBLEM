@@ -14,5 +14,5 @@ problem(
     wiki_name="問題/反射",
     assignees=["task4233"],
     need_custom_judge=False,
-    # reference_solution="",
+    reference_solution="task_AC",
 )
