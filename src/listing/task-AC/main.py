@@ -16,7 +16,7 @@ def solve():
             lb = max(lb, c[i])
         elif s[i] == "on_sale":
             ub = min(ub, c[i])
-    return "Yes" if lb <= p <= ub else "No"
+    return "Yes" if lb < p < ub else "No"
 
 
 print(solve())
