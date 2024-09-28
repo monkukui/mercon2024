@@ -57,7 +57,31 @@ https://rime-doc.readthedocs.io/ja/latest/index.html
 
 ### テストの実行方法
 
+#### rime
 src/[your problem]/で `rime test` するとテストを実行できる
 
 validator.cpp:4:10: fatal error: ../../common/testlib.h: No such file or directory
 というエラーが出た場合はvalidator.cppとgenerator.cppの　#include "../../common/　を　#include "../../../common/　に変えてください
+
+#### sampleの確認
+src/で `python3 test_all_testcase.py`をすることで手動で作成したテストケースの答えとrimeで作成されたた答えが一致するか確認できます。
+
+出力の見方
+
+- `[ PASS ] {問題名}` 問題の解放全部で想定通りの動きをした時に出力されます。
+- `[ ERROR ] {問題名}/{解法名}: {テストケース名}の解が存在しません、WAやTLEでrimeの実行が途中で止まっている可能性があります` sampleの答えが一致しない場合やsampleの答えが存在しない場合に起きます。AC解が途中でWAやTLEになっている時に発生します。
+- `[ Unexpected Error ]` ファイルの構造がおかしい場合やファイル、フォルダが存在しない場合に起きます
+
+
+## 問題
+
+|     | 問題名 |
+| --- | ----- |
+| A | listing |
+| B | BuyItem |
+| C | reflection |
+| D | RareShoes |
+| E | TreeWalking |
+| F | Mercard |
+| G | hallo |
+| H | MultipleInequalities |
