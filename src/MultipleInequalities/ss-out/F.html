@@ -119,7 +119,7 @@
 <ul>
 <li>$b_{x_i} &lt; b_{y_i}$</li>
 </ul>
-<p>メルくんは、与えられた順列 $A$ から $0$ 個以上の要素を削除し、残った要素を元の順序で並べて得られる数列を $B$ とすることにしました。
+<p>メルくんは、与えられた順列 $A$ から $N - M$ 個の要素を削除し、残った要素を元の順序で並べて得られる数列を $B$ とすることにしました。
 不等式をすべて満たすような数列 $B$ を作ることができますか？</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
@@ -133,6 +133,7 @@ $x_{M - 1}$ $y_{M - 1}$
 <ul>
 <li>$1 \leq N \leq 5{,}000$</li>
 <li>$1 \leq M \leq 5{,}000$</li>
+<li>$N &gt; M$</li>
 <li>$a_1, \ldots, a_N$ は、$(1, \ldots, N)$ を並び替えて作られる順列</li>
 <li>$1 \leq x_i \leq M$</li>
 <li>$1 \leq y_i \leq M$</li>
@@ -142,58 +143,25 @@ $x_{M - 1}$ $y_{M - 1}$
 </ul>
 <h3>出力形式</h3>
 <p>不等式をすべて満たすような数列 B をつくることができるなら <code>Yes</code> を、できないなら <code>No</code> を一行に出力してください。</p>
-<h3>入力例 1</h3>
-<pre class="input-format"><code class="language-input-format">7 2
-1 2
-1 3
+<h3>入力例</h3>
+<pre class="input-format"><code class="language-input-format">10 5
+1 10 3 5 8 9 2 4 7 6
+2 1
 2 4
-2 5
-4 6
-3 7
-1 5 4 3 2 6 7
+4 3
+4 5
 </code></pre>
-<h3>出力例 1</h3>
-<pre class="input-format"><code class="language-input-format">1 2
+<h3>出力例</h3>
+<pre class="input-format"><code class="language-input-format">Yes
 </code></pre>
-<h3>入力例 2</h3>
-<pre class="input-format"><code class="language-input-format">7 3
-1 2
-1 3
-2 4
-2 5
-4 6
-3 7
-1 5 4 3 2 6 7
-</code></pre>
-<h3>出力例 2</h3>
-<pre class="input-format"><code class="language-input-format">1 3 6
-</code></pre>
-<h3>入力例 3</h3>
-<pre class="input-format"><code class="language-input-format">7 4
-1 2
-1 3
-2 4
-2 5
-4 6
-3 7
-1 5 4 3 2 6 7
-</code></pre>
-<h3>出力例 3</h3>
-<pre class="input-format"><code class="language-input-format">1 5 3 6
-</code></pre>
-<h3>入力例 4</h3>
-<pre class="input-format"><code class="language-input-format">7 5
-1 2
-1 3
-2 4
-2 5
-4 6
-3 7
-1 5 4 3 2 6 7
-</code></pre>
-<h3>出力例 4</h3>
-<pre class="input-format"><code class="language-input-format">-1
-</code></pre>
+<p>与えられた不等式は、以下です。</p>
+<ul>
+<li>$b_2 &lt; b_1$</li>
+<li>$b_2 &lt; b_4$</li>
+<li>$b_4 &lt; b_3$</li>
+<li>$b_4 &lt; b_5$</li>
+</ul>
+<p>$A=(1, 10, 3, 5, 8, 9, 2, 4, 7, 6)$ から要素 $1$, $5$, $8$, $2$, $6$ を取り除いて作られる数列 $B=(10, 3, 9, 4, 7)$ は、上記の不等式をすべて満たします。</p>
     </div>
     
 </body>
