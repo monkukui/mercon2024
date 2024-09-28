@@ -45,9 +45,9 @@ template <class T> std::vector<int> cartesian_tree(const std::vector<T>& a) { re
 
 const int num_of_type = 2;
 std::string case_type[num_of_type] = {"10_random_small","11_random_large"};
-int num_of_case[num_of_type] = {100,50};
+int num_of_case[num_of_type] = {100,20};
 int min_n[num_of_type] = {1,MAX_N};
-int max_n[num_of_type] = {10,MAX_N};
+int max_n[num_of_type] = {20,MAX_N};
 
 void generate_random(int n, int m, string file_name) {
     std::ofstream output(file_name);

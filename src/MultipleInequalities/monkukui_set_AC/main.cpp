@@ -91,6 +91,7 @@ int main() {
     // vector<int> b(m);
     rep (i, n) {
         cin >> a[i];
+        a[i]--;
     }
     // rep (i, m) {
     //     cin >> b[i];
