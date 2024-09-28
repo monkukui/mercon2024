@@ -25,6 +25,7 @@ $x_{M - 1}$ $y_{M - 1}$
 
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
 - ${@constraints.MIN_N} \leq M \leq {@constraints.MAX_N}$
+- $N > M$
 - $a_1, \ldots, a_N$ は、$(1, \ldots, N)$ を並び替えて作られる順列
 - $1 \leq x_i \leq M$
 - $1 \leq y_i \leq M$
