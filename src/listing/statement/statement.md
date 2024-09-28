@@ -30,7 +30,7 @@ $C_N$ $S_N$
 ### 制約
 
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
-- ${@constraints.MIN_p} \leq P, C_i \leq {@constraints.MAX_p}$
+- ${@constraints.MIN_PC} \leq P, C_i \leq {@constraints.MAX_PC}$
 - $N, P, C_i$ は正の整数
 - $S_i$ は `sold_out` または `on_sale`
 - 販売中のスマホが少なくとも 1 つ存在する
