@@ -14,5 +14,3 @@ markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 [constraints]
     MIN_N = 1
     MAX_N = 5000
-    MIN_M = 1
-    MAX_M = 5000
