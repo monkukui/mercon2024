@@ -15,8 +15,9 @@ int main(){
 
     for (int i = 0; i < N; i++) {
       int C = inf.readInt(MIN_PC, MAX_PC);
-      string S = inf.readString();
-      inf.readEoln();
+      inf.readSpace();
+      string S = inf.readString();//Eolnも読まれる
+      assert((S == "on_sale" || S == "sold_out", "check input S"));
     }
     inf.readEof();
 
