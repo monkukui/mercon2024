@@ -112,54 +112,46 @@
 <body>
     
     <div >
-        <h2>A:ナンってナン回言った？</h2>
+        <h2>反射</h2>
 <h3>問題</h3>
-<p>HCPC に所属している pitsu 君はサークルの活動後にカレー屋さんに行きました。そこでは張り紙にこんなことが書いてありました。</p>
-<p>「ナンおかわり自由！」</p>
-<p>これを見た waku 君は</p>
-<p>「ナンと言った数だけナンをおかわりしよう」</p>
-<p>と提案しました。pitsu 君の発言が与えられるので、pitsu 君がナンと言った回数を求めてください。</p>
-<p>具体的には、文字列 $t_1\ldots t_m$ がナンであるとは、$m\ge 3$ かつ $t_1=t_m=\ $<code>N</code>$,\ t_i=\ $<code>A</code>$\ (i=2,\ldots,m-1)$ をみたすことを言います。<code>A</code> と <code>N</code> のみからなる長さ $N$ の文字列 $S$ が与えられるので、$S$ の連続する部分文字列であってナンであるものの数を数えてください。</p>
+<p>$H \times W$ のディスプレイ内を点が動くスクリーンセーバーを開発した。点は $x$ 軸とのなす角 $45 \tcdegree$ で進み、$1$ 秒あたり $x$ 座標と $y$ 座標がそれぞれ $1$ ずつ変化するように実装されている。そして、この点は普通の光と同じように真っすぐ進み、画面端に到達すると同じ速度で反射する。</p>
+<p>経過時間 $T$ と初期座標 $(s_x, s_y)$ が与えられるので $T$ 秒後に点座標を一行で出力せよ。</p>
+<p>例えば、 $W=4, H=3, T=7, s_x=2, s_y=0$ の時は、以下のような軌跡を描き、 $T$ 秒後には $(1, 1)$ に存在している。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N$
-$S$
+<pre class="input-format"><code class="language-input-format">$W$ $H$ $T$
+$s_x$ $s_y$
 </code></pre>
 <h3>制約</h3>
 <ul>
-<li>$1 \leq N \leq 2{,}000$</li>
-<li>$N$は整数</li>
-<li>$S$ は <code>N</code>, <code>A</code> のみからなる長さ $N$ の文字列である</li>
+<li>入力は全て整数</li>
+<li>$1 \leq W, H, T \leq 10^{12}$</li>
+<li>$1 \leq s_y \leq H$</li>
+<li>$1 \leq s_x \leq W$</li>
 </ul>
 <h3>出力形式</h3>
-<p>$S$ の部分文字列であってナンであるものの数を一行に出力する。最後に改行すること。</p>
-<h3>Sample Input 1</h3>
-<pre class="input-format"><code class="language-input-format">3
-NAN
+<p>答えの座標を $ans_x ans_y$ として出力せよ。
+なお、答えが $32$ bit 整数に収まらないことがある事に注意せよ。</p>
+<h3>入力例 1</h3>
+<pre class="input-format"><code class="language-input-format">4 3 7
+2 0
 </code></pre>
-<h3>Sample Output 1</h3>
-<pre class="input-format"><code class="language-input-format">1
+<h3>出力例 1</h3>
+<pre class="input-format"><code class="language-input-format">1 1
 </code></pre>
-<h3>Sample Input 2</h3>
-<pre class="input-format"><code class="language-input-format">3
-ANA
+<h3>入力例 2</h3>
+<pre class="input-format"><code class="language-input-format">3 3 10
+0 1
 </code></pre>
-<h3>Sample Output 2</h3>
-<pre class="input-format"><code class="language-input-format">0
+<h3>出力例 2</h3>
+<pre class="input-format"><code class="language-input-format">2 1
 </code></pre>
-<h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">12
-NAAAAAAAANAN
+<h3>入力例 3</h3>
+<pre class="input-format"><code class="language-input-format">35946642085 995999573746 320560596816
+45502468318 256917219223
 </code></pre>
-<h3>Sample Output 3</h3>
-<pre class="input-format"><code class="language-input-format">2
-</code></pre>
-<h3>Sample Input 4</h3>
-<pre class="input-format"><code class="language-input-format">50
-ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
-</code></pre>
-<h3>Sample Output 4</h3>
-<pre class="input-format"><code class="language-input-format">14
+<h3>出力例 3</h3>
+<pre class="input-format"><code class="language-input-format">6596644284 577477816039
 </code></pre>
     </div>
     
