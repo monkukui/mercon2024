@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Problem Statement</title>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        html {
+            color: #222222;
+            font-family: "Noto Serif";
+        }
+
+        h1 {
+            font-size: 16pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h4 {
+            font-size: 13pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h5 {
+            font-size: 12pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 12pt;
+        }
+
+        li {
+            font-size: 12pt;
+        }
+
+        pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+        }
+
+        code {
+            color: #e83e8c;
+        }
+
+        code.language-input-format {
+            color: #222222;
+        }
+
+        .testcase_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-width: 480;
+            max-height: 340;
+        }
+
+        .error_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #f0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-height: 340;
+            background-color: #ffeeee;
+        }
+
+        .table tbody>tr>td.vert-aligned {
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [["$", "$"]],
+                processEscapes: true,
+                processClass: 'input-format|language-input-format'
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+</head>
+
+<body>
+    
+    <div >
+        <h2>A:メルカリで出品</h2>
+<h3>問題</h3>
+<p>メル君は使わなくなったスマホをメルカリで出品しようとしています。
+メルくんは、販売中のどのスマホよりも安く、販売済みのどのスマホよりも高い値段で出品しようと考えています。</p>
+<p>メルカリにはスマホが $N$ 個出品されており、それぞれ $1$ から $N$ までの番号が割り当てられています。
+$i$ 番目のスマホの値段 $c_i$ と、販売状況を表す文字列 $s_i$ が与えられます。$s_i$ が <code>sold_out</code> ならそのスマホが<strong>販売済み</strong>であることを表し、<code>on_sale</code> ならそのスマホが<strong>販売中</strong>であることを表します。</p>
+<p>メルくんが決めた値段 $p$ が、以下の条件を満たすかを判定してください。</p>
+<p>条件:</p>
+<ul>
+<li>値段 $p$ は、販売中のどのスマホよりも安い</li>
+<li>値段 $p$ は、販売済みのどのスマホよりも高い</li>
+</ul>
+<h3>入力形式</h3>
+<p>入力は以下の形式で与えられる。</p>
+<pre class="input-format"><code class="language-input-format">$N$ $p$
+$c_1$ $s_1$
+$c_2$ $s_2$
+$\dots$
+$c_N$ $s_N$
+</code></pre>
+<h3>制約</h3>
+<ul>
+<li>$2 \leq N \leq 100{,}000$</li>
+<li>$300 \leq p, c_i \leq 9{,}999{,}999$</li>
+<li>$N, p, c_i$ は正の整数</li>
+<li>$s_i$ は <code>sold_out</code> または <code>on_sale</code></li>
+</ul>
+<h3>出力形式</h3>
+<p>メルくんが決めた値段 $p$ が条件を満たすなら <code>YES</code> を、そうでないなら <code>NO</code> を一行に出力してください。</p>
+<h3>Sample Input 1</h3>
+<pre class="input-format"><code class="language-input-format">2 50000
+23000 sold_out
+55000 on_sale
+60000 on_sale
+30000 sold_out
+70000 on_sale
+</code></pre>
+<h3>Sample Output 1</h3>
+<pre class="input-format"><code class="language-input-format">YES
+</code></pre>
+<h3>Sample Input 2</h3>
+<pre class="input-format"><code class="language-input-format">2 20000
+20000 sold_out
+50000 on_sale
+</code></pre>
+<h3>Sample Output 2</h3>
+<pre class="input-format"><code class="language-input-format">NO
+</code></pre>
+<h3>Sample Input 3</h3>
+<pre class="input-format"><code class="language-input-format">2 4000
+1000 sold_out
+1800 on_sale
+2000 sold_out
+4500 on_sale
+</code></pre>
+<h3>Sample Output 3</h3>
+<pre class="input-format"><code class="language-input-format">NO
+</code></pre>
+    </div>
+    
+</body>
+
+</html>

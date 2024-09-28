@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: python -*-
+
+## Solution definition.
+## Choose and modify one of definitions below.
+## Adding a parameter challenge_cases marks this solution as a wrong solution.
+
+# C言語で答えを書く場合以下の行以外をコメントアウト
+#c_solution(src='main.c')
+
+# cppでACの答えを書く場合以下の行以外をコメントアウト
+# cxx_solution(src='main.cpp', flags=['-std=c++14'])
+# cppでWAの答えを書く場合以下の行以外をコメントアウト
+# cxx_solution(src='main.cpp', flags=['-std=c++14'], challenge_cases=[])
+# cppでTLEの答えを書く場合以下の 2行 以外をコメントアウト
+# cxx_solution(src='main.cpp', flags=['-std=c++14'], challenge_cases=[])
+# expected_verdicts([TLE, AC])
+
+# jsで答えを書く場合は以下の行以外をコメントアウト
+#java_solution(src='Main.java', encoding='UTF-8', mainclass='Main')
+
+# pythonでACの答えを書く場合以下の行以外をコメントアウト
+script_solution(src='main.py', challenge_cases=[])
+# pythonでWAの答えを書く場合以下の行以外をコメントアウト
+# script_solution(src='main.py', challenge_cases=[])
+# pythonでTLEの答えを書く場合以下の 2行 以外をコメントアウト
+# script_solution(src='main.py', challenge_cases=[])
+# expected_verdicts([TLE, AC])
+
+# シェルスクリプトで答えを書く場合以下の行以外をコメントアウト
+#script_solution(src='REACTIVE.sh', challenge_cases=[])

@@ -23,13 +23,13 @@ class TestCaseGenerator:
         p = self.random.randint(MIN_P, MAX_P)
 
         if is_underrange:
-            max_p_sold_out = self.random.randint(p + 1, MAX_P)
+            max_p_sold_out = self.random.randint(p, MAX_P)
         else:
-            max_p_sold_out = p
+            max_p_sold_out = max(p - 1, MIN_P)
         if is_overrange:
-            min_p_on_sale = self.random.randint(MIN_P, p - 1)
+            min_p_on_sale = self.random.randint(MIN_P, p)
         else:
-            min_p_on_sale = p
+            min_p_on_sale = min(p + 1, MAX_P)
 
         num_sold_out = self.random.randint(1, n - 1)
 
@@ -70,9 +70,9 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--seed", type=int, default=0)
-    parser.add_argument("-n", "--num-tests", type=int, default=20)
+    parser.add_argument("-n", "--num-tests", type=int, default=100)
     parser.add_argument("-o", "--output-dir", default=".")
-    parser.add_argument("-p", "--prefix", default="01_test_")
+    parser.add_argument("-p", "--prefix", default="01_test_gen_")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
