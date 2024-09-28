@@ -70,9 +70,9 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--seed", type=int, default=0)
-    parser.add_argument("-n", "--num-tests", type=int, default=200)
+    parser.add_argument("-n", "--num-tests", type=int, default=100)
     parser.add_argument("-o", "--output-dir", default=".")
-    parser.add_argument("-p", "--prefix", default="01_test_")
+    parser.add_argument("-p", "--prefix", default="01_test_gen_")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
