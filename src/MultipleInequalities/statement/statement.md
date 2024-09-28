@@ -1,10 +1,10 @@
 ## H:Multiple Inequalities
 
 ### 問題
-長さ $N$ の順列 $A = (a_1, \ldots, a_N)$ が与えられます。
-また、長さ $M$ の数列 $B = (b_1, \ldots, b_M)$ に対して、以下の形式の不等式が $M-1$ 個与えられます。
+長さ $N$ の順列 $A = (A_1, A_2 \ldots, A_N)$ が与えられます。
+また、長さ $M$ の数列 $B = (B_1, B_2 \ldots, B_M)$ に対して、以下の形式の不等式が $M-1$ 個与えられます。
 
- - $b_{x_i} < b_{y_i}$
+ - $B_{x_i} < B_{y_i}$
 
 メルくんは、与えられた順列 $A$ から $N - M$ 個の要素を削除し、残った要素を元の順序で並べて得られる数列を $B$ とすることにしました。
 不等式をすべて満たすような数列 $B$ を作ることができますか？
@@ -15,8 +15,9 @@
 
 ```
 $N M$
-$a_1 \dots a_N$
+$A_1 A_2 \dots A_N$
 $x_1$ $y_1$
+$x_2$ $y_2$
 $\vdots$
 $x_{M - 1}$ $y_{M - 1}$
 ```
@@ -26,7 +27,7 @@ $x_{M - 1}$ $y_{M - 1}$
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
 - ${@constraints.MIN_N} \leq M \leq {@constraints.MAX_N}$
 - $N > M$
-- $a_1, \ldots, a_N$ は、$(1, \ldots, N)$ を並び替えて作られる順列
+- $A_1, A_2 \ldots, A_N$ は、$(1, 2 \ldots, N)$ を並び替えて作られる順列
 - $1 \leq x_i \leq M$
 - $1 \leq y_i \leq M$
 - $x_i \neq y_i$
