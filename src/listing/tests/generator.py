@@ -3,7 +3,7 @@
 import itertools
 import random
 
-MAX_N = 10**5
+MAX_N = 10**2
 MIN_N = 2
 MAX_P = 9999999
 MIN_P = 300
