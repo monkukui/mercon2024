@@ -117,39 +117,39 @@
 <p>メル君は使わなくなったスマホをメルカリで出品しようとしています。
 メルくんは、販売中のどのスマホよりも安く、販売済みのどのスマホよりも高い値段で出品しようと考えています。</p>
 <p>メルカリにはスマホが $N$ 個出品されており、それぞれ $1$ から $N$ までの番号が割り当てられています。
-$i$ 番目のスマホの値段 $c_i$ と、販売状況を表す文字列 $s_i$ が与えられます。$s_i$ が <code>sold_out</code> ならそのスマホが<strong>販売済み</strong>であることを表し、<code>on_sale</code> ならそのスマホが<strong>販売中</strong>であることを表します。</p>
-<p>メルくんが決めた値段 $p$ が、以下の条件を満たすかを判定してください。</p>
-<p>条件:</p>
+$i$ 番目のスマホの値段 $C_i$ と、販売状況を表す文字列 $S_i$ が与えられます。$S_i$ が <code>sold_out</code> ならそのスマホが<strong>販売済み</strong>であることを表し、<code>on_sale</code> ならそのスマホが<strong>販売中</strong>であることを表します。</p>
+<p>メルくんが決めた値段 $P$ が、以下の条件を満たすかを判定してください。</p>
+<p>条件:<br />
+全ての整数 $i (1 \leq i \leq N)$ について</p>
 <ul>
-<li>値段 $p$ は、販売中のどのスマホよりも安い</li>
-<li>値段 $p$ は、販売済みのどのスマホよりも高い</li>
+<li>$S_i$ が<code>on_sale</code>なら $P \lt C_i$</li>
+<li>$S_i$ が<code>sold_out</code>なら $C_i \lt P$</li>
 </ul>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N$ $p$
-$c_1$ $s_1$
-$c_2$ $s_2$
+<pre class="input-format"><code class="language-input-format">$N$ $P$
+$C_1$ $S_1$
+$C_2$ $S_2$
 $\dots$
-$c_N$ $s_N$
+$C_N$ $S_N$
 </code></pre>
 <h3>制約</h3>
 <ul>
 <li>$2 \leq N \leq 100{,}000$</li>
-<li>$300 \leq p, c_i \leq 9{,}999{,}999$</li>
-<li>$N, p, c_i$ は正の整数</li>
-<li>$s_i$ は <code>sold_out</code> または <code>on_sale</code></li>
+<li>$300 \leq P, C_i \leq 9{,}999{,}999$</li>
+<li>$N, P, C_i$ は正の整数</li>
+<li>$S_i$ は <code>sold_out</code> または <code>on_sale</code></li>
 <li>販売中のスマホが少なくとも 1 つ存在する</li>
 <li>販売済みのスマホが少なくとも 1 つ存在する</li>
 </ul>
 <h3>出力形式</h3>
-<p>メルくんが決めた値段 $p$ が条件を満たすなら <code>YES</code> を、そうでないなら <code>NO</code> を一行に出力してください。</p>
+<p>メルくんが決めた値段 $P$ が条件を満たすなら <code>YES</code> を、そうでないなら <code>NO</code> を一行に出力してください。</p>
 <h3>Sample Input 1</h3>
-<pre class="input-format"><code class="language-input-format">2 50000
-23000 sold_out
-55000 on_sale
-60000 on_sale
-30000 sold_out
-70000 on_sale
+<pre class="input-format"><code class="language-input-format">4 500
+550 on_sale
+600 on_sale
+300 sold_out
+700 on_sale
 </code></pre>
 <h3>Sample Output 1</h3>
 <pre class="input-format"><code class="language-input-format">YES
@@ -163,7 +163,7 @@ $c_N$ $s_N$
 <pre class="input-format"><code class="language-input-format">NO
 </code></pre>
 <h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">2 4000
+<pre class="input-format"><code class="language-input-format">4 4000
 1000 sold_out
 1800 on_sale
 2000 sold_out
