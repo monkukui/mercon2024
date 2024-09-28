@@ -95,6 +95,13 @@ int main() {
             }
         }
         if (ok) {
+            for (int i = 0; i < b.size(); i++) {
+                cerr << b[i] << " ";
+            }
+            cerr << endl;
+            for (int i = 0; i < m - 1; i++) {
+              cerr << b[x[i]] << " " << b[y[i]] << endl;
+            }
             cout << "Yes" << endl;
             return 0;
         }
