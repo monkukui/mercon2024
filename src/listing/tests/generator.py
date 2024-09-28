@@ -92,4 +92,4 @@ if __name__ == "__main__":
             for price, state in items:
                 f.write(f"{price} {state}\n")
         with open(f"{args.output_dir}/{args.prefix}{i:0{digits}d}.out", "w") as f:
-            f.write("YES\n" if ans else "NO\n")
+            f.write("Yes\n" if ans else "No\n")
