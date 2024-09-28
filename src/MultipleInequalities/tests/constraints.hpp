@@ -5,5 +5,3 @@
 
 const long long int MIN_N = 1;
 const long long int MAX_N = 5000;
-const long long int MIN_M = 1;
-const long long int MAX_M = 5000;
