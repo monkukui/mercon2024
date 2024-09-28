@@ -115,8 +115,8 @@
         <h2>H:Multiple Inequalities</h2>
 <h3>問題</h3>
 <p>長さ $N$ の順列 $A = (A_1, A_2 \ldots, A_N)$ が与えられます。
-メルくんは、与えられた順列 $A$ から $N - M$ 個の要素を削除し、残った要素を元の順序で並べて得られる長さ $M$ の数列 $B$ を作ることにしました。
-また、数列 $B = (B_1, B_2 \ldots, B_M)$ に対して、以下の形式の不等式が $M-1$ 個与えられます。</p>
+メルくんは、与えられた順列 $A$ から $N - M$ 個の要素を削除し、残った要素を元の順序で並べて得られる長さ $M$ の数列 $B$ を作ることにしました。</p>
+<p>また、数列 $B = (B_1, B_2 \ldots, B_M)$ に対して、以下の形式の不等式が $M-1$ 個与えられます。</p>
 <ul>
 <li>$B_{x_i} &lt; B_{y_i}$</li>
 </ul>
@@ -139,7 +139,7 @@ $x_{M - 1}$ $y_{M - 1}$
 <li>$1 \leq y_i \leq M$</li>
 <li>$x_i \neq y_i$</li>
 <li><span style="color: red;">$i \neq j$ ならば $y_i \neq y_j$</span></li>
-<li><span style="color: red;">$x_i = y_j$ $(i &lt; j)$ を満たす $i$, $j$ の組は高々 2 つ</span></li>
+<li><span style="color: red;">$x_i = x_j$ $(i &lt; j)$ を満たす $i$, $j$ の組は高々 2 つ</span></li>
 </ul>
 <h3>出力形式</h3>
 <p>不等式をすべて満たすような数列 B を作ることができるなら <code>Yes</code> を、できないなら <code>No</code> を一行に出力してください。</p>
