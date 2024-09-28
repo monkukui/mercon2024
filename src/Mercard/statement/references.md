@@ -21,3 +21,12 @@ https://atcoder.jp/contests/ABC209/tasks/ABC209_E
 参考
 注釈にガウス記号の説明
 https://atcoder.jp/contests/ABC233/tasks/ABC233_E
+
+
+
+- $0 \leq S \lt X$ のとき : 商品の値段の $1\%$ がポイントに加算される。
+- $X \leq S \lt 2 \times X$ のとき : 商品の値段の $2\%$ がポイントに加算される。
+- $2 \times X \leq S$ のとき : 商品の値段の $3\%$ がポイントに加算される。
+
+参考:
+https://atcoder.jp/contests/ABC201/tasks/ABC201_C
