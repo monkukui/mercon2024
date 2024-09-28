@@ -114,44 +114,58 @@
     <div >
         <h2>B:購入</h2>
 <h3>問題</h3>
-<p>メルカリではたくさんのアイテムが販売されており、ユーザー$u_i$がアイテム$v_i$を購入すると、そのアイテムに対応する幸福度$h_i$がユーザー$u_i$に与えられます。幸福度情報が$N$個与えられます。ユーザーがそれぞれ複数のアイテムを購入することができますが、各アイテムは一度しか購入できません。</p>
-<p>すべてのユーザーの幸福度の合計を最大化するような購入方法を求めてください。なお、与えられる入力では全てのユーザーの幸福度の合計が最大になるような購入方法は一意に定まります。</p>
+<p>メルカリには、ユーザー $1$ からユーザー $10^{9}$ までの $10^{9}$ 人のユーザーがいます。また、メルカリには、商品 $1$ から商品 $10^{9}$ までの $10^{9}$ 個の商品が 1 つずつ出品されています。</p>
+<p>はじめ、すべての人の<strong>幸福度</strong>は $0$ です。</p>
+<p>次のような形式の情報が $N$ 個与えられます。</p>
+<ul>
+<li>人 $u_i$ が商品 $v_i$ を購入すると、その人の幸福度が $h_i$ 上昇する。</li>
+</ul>
+<p>すべてのユーザーの幸福度の合計が最大となるような<strong>購入方法</strong>を求めてください。
+購入方法とは、商品 $v_i$ がユーザー $u_i$ によって購入されることを表す情報 $(v_i, u_i)$ の集合です。商品は一度購入されると、他のユーザーが購入することはできません。</p>
+<p>なお、与えられる入力では、求める購入方法が一意に定まることが保証されます。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<p><code>{ .input-format .input-format }
-$N$
+<pre class="input-format"><code class="language-input-format">$N$
 $u_1$ $v_1$ $h_1$
 $u_2$ $v_2$ $h_2$
 $\dots$
-$u_N$ $v_N$ $h_N$</code></p>
+$u_N$ $v_N$ $h_N$
+</code></pre>
 <h3>制約</h3>
 <ul>
 <li>$1 \leq N \leq 200{,}000$</li>
 <li>$1 \leq u_i \leq 10^{9}$</li>
 <li>$1 \leq v_i \leq 10^{9}$</li>
 <li>$1 \leq h_i \leq 100$</li>
+<li>$i \neq j$ のとき、$(u_i, v_i) \neq (u_j, v_j)$</li>
 <li>入力はすべて整数</li>
-<li>入力は、幸福度の最大化に一意の解が存在するように作成されている</li>
-<li>$i != j$の時、$(u_i, v_i) != (u_j, v_j)$</li>
+<li>入力は、幸福度の合計が最大となるような購入方法が一意に定まることが保証される</li>
 </ul>
 <h3>出力形式</h3>
-<p>幸福度の合計を最大化するようなトランザクション数（購入数）$M$と、購入方法（アイテムのID$v_i$と購入したユーザーのID$u$）をアイテムID$v_i$の小さい順で出力してください
-<code>{ .input-format .input-format }
-$M$
+<p>一行目に、幸福度の合計が最大となるような購入数 $M$ を出力してください。</p>
+<p>続く二行目から $M+1$ 行目には、商品 $v_i$ がユーザ $u_i$ に購入されることを表す $v_i$ と $u_i$ を空白区切りで出力してください。
+このとき、出力は $v_i$ が<strong>昇順になるように</strong>してください。</p>
+<pre class="input-format"><code class="language-input-format">$M$
 $v_1$ $u_1$
 $v_1$ $u_2$
 $\dots$
-$v_M$ $u_M$</code></p>
+$v_M$ $u_M$
+</code></pre>
 <h3>入力例 1</h3>
-<p><code>{ .input-format .input-format }
-4
+<pre class="input-format"><code class="language-input-format">4
 2 2 6
 1 1 37
 2 1 40
-1 2 56</code></p>
+1 2 56
+</code></pre>
+<h3>出力例 1</h3>
+<pre class="input-format"><code class="language-input-format">2
+1 2
+2 1
+</code></pre>
+<p>説明 ja</p>
 <h3>入力例 2</h3>
-<p><code>{ .input-format .input-format }
-10
+<pre class="input-format"><code class="language-input-format">10
 3 5 82
 2 5 62
 4 5 34
@@ -161,10 +175,18 @@ $v_M$ $u_M$</code></p>
 3 1 25
 5 2 31
 4 1 11
-5 3 70</code></p>
+5 3 70
+</code></pre>
+<h3>出力例 2</h3>
+<pre class="input-format"><code class="language-input-format">5
+1 3
+2 5
+3 5
+4 1
+5 3
+</code></pre>
 <h3>入力例 3</h3>
-<p><code>{ .input-format .input-format }
-15
+<pre class="input-format"><code class="language-input-format">15
 4 20 71
 10 10 57
 2 20 50
@@ -179,7 +201,24 @@ $v_M$ $u_M$</code></p>
 4 7 87
 10 14 75
 5 15 64
-6 3 42</code></p>
+6 3 42
+</code></pre>
+<h3>出力例 3</h3>
+<pre class="input-format"><code class="language-input-format">13
+2 3
+3 1
+5 2
+6 5
+7 4
+9 9
+10 10
+13 9
+14 10
+15 5
+16 5
+19 6
+20 4
+</code></pre>
     </div>
     
 </body>
