@@ -13,18 +13,21 @@
 using namespace std;
 
 XRand Rnd(334);
-int random_max_NX_testcase_num = 3;
-int random_max_N_testcase_num = 3;
-int random_max_X_testcase_num = 3;
-int random_max_NX_few_larg_A_num = 3;
-int random_max_NX_small_A_num = 3;
-int random_max_NX_one_big_A_num = 3;
-int random_max_NX_just_X_num = 3;
-int random_max_NX_just_X_few_pattern_num = 5;
+int random_max_NX_testcase_num = 2;
+int random_max_N_testcase_num = 2;
+int random_max_X_testcase_num = 2;
+int random_max_NX_few_larg_A_num = 2;
+int random_max_NX_small_A_num = 2;
+int random_max_NX_one_big_A_num = 2;
+int random_max_NX_just_X_num = 2;
+int random_max_NX_just_X_few_pattern_num = 2;
 int random_max_NX_all_A_num = 2;
 int random_max_NXA_num = 1;
-int random_max_NX_all_A_use_same_A_num = 3;
-int random_max_NX_few_A_num = 3;
+int random_max_NX_all_A_use_same_A_num = 2;
+int random_max_NX_few_A_num = 2;
+int random_few_max_pattern1_num = 4;
+int random_few_max_pattern2_num = 4;
+int random_few_max_pattern3_num = 4;
 
 void random_max_NX(int casenum) {
     std::string file_name="10_random_max_NX"+std::to_string(casenum)+".in";
@@ -296,6 +299,113 @@ void random_max_NX_few_A(int casenum) {
     output << std:: endl;
 }
 
+void random_few_max_pattern1(int casenum) {
+    std::string file_name="22_random_few_max_pattern1_"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
+
+    int N = MAX_N, X = MAX_X;
+    output<< N << ' ' << X << std::endl;
+    vector<int> A;
+    int a1 = X / 2 - 1, a2 = X / 2 - 2;
+    A.push_back(a1);
+    A.push_back(X - a1);
+    A.push_back(a2);
+    A.push_back(X - a2);
+    while (A.size() != N) {
+        A.push_back(Rnd.NextInt(X / 2 + 10, X - 10));
+    }
+    std::random_device rd;  // 乱数生成器
+    std::mt19937 g(rd());   // メルセンヌ・ツイスター乱数エンジン
+
+    // 配列の要素をシャッフル
+    std::shuffle(A.begin(), A.end(), g);
+
+    for (int i = 0; i < N; i++) {
+        output<< A.at(i);
+        if (i != N - 1) {
+            output << ' ';
+        }
+    }
+    output << std:: endl;
+}
+
+void random_few_max_pattern2(int casenum) {
+    std::string file_name="23_random_few_max_pattern2_"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
+
+    int N = MAX_N, X = MAX_X;
+    output<< N << ' ' << X << std::endl;
+    vector<int> A;
+    int sum = 0;
+    int next = 4;
+    while (true) {
+        if (sum + (next * 2 + 1) > X) {
+            A.push_back(X - sum);
+            break;
+        }
+        else {
+            A.push_back(next);
+            sum += next;
+            next += 1;
+        }
+    }
+    while (A.size() != N) {
+        A.push_back(Rnd.NextInt(X - 3, X - 1));
+    }
+    std::random_device rd;  // 乱数生成器
+    std::mt19937 g(rd());   // メルセンヌ・ツイスター乱数エンジン
+
+    // 配列の要素をシャッフル
+    std::shuffle(A.begin(), A.end(), g);
+
+    for (int i = 0; i < N; i++) {
+        output<< A.at(i);
+        if (i != N - 1) {
+            output << ' ';
+        }
+    }
+    output << std:: endl;
+}
+
+void random_few_max_pattern3(int casenum) {
+    std::string file_name="24_random_few_max_pattern3_"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
+
+    int N = MAX_N, X = MAX_X;
+    output<< N << ' ' << X << std::endl;
+    vector<int> A;
+    int over = Rnd.NextInt(1, 5);
+    int sum = 0;
+    int next = 10;
+    while (true) {
+        if (sum + (next * 2 + 1) > X + over) {
+            A.push_back(X + over - sum);
+            break;
+        }
+        else {
+            A.push_back(next);
+            sum += next;
+            next += 1;
+        }
+    }
+    while (A.size() != N) {
+        A.push_back(Rnd.NextInt(X - 4, X - 1));
+    }
+    std::random_device rd;  // 乱数生成器
+    std::mt19937 g(rd());   // メルセンヌ・ツイスター乱数エンジン
+
+    // 配列の要素をシャッフル
+    std::shuffle(A.begin(), A.end(), g);
+
+    for (int i = 0; i < N; i++) {
+        output<< A.at(i);
+        if (i != N - 1) {
+            output << ' ';
+        }
+    }
+    output << std:: endl;
+}
+
 int main() {
     for (int i = 0; i < random_max_NX_testcase_num; i++) {
         random_max_NX(i);
@@ -329,6 +439,15 @@ int main() {
     }
     for (int i = 0; i < random_max_NX_few_A_num; i++) {
         random_max_NX_few_A(i);
+    }
+    for (int i = 0; i < random_few_max_pattern1_num; i++) {
+        random_few_max_pattern1(i);
+    }
+    for (int i = 0; i < random_few_max_pattern2_num; ++i) {
+        random_few_max_pattern2(i);
+    }
+    for (int i = 0; i < random_few_max_pattern3_num; ++i) {
+        random_few_max_pattern3(i);
     }
     max_NXA(1);
     return 0;
