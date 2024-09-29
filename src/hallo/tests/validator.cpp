@@ -36,6 +36,9 @@ int main() {
     inf.readSpace();
     int c = inf.readInt(MIN_XC, MAX_XC);
     inf.readEoln();
+    if (mp.find({x, d}) != mp.end()) {
+      quitf(_wa, "error: same input x, d");
+    }
     ensure(mp.find({x, d}) == mp.end());
     mp[{x, d}] = true;
   }
