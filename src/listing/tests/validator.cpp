@@ -17,7 +17,9 @@ int main(){
       int C = inf.readInt(MIN_PC, MAX_PC);
       inf.readSpace();
       string S = inf.readString();//Eolnも読まれる
-      assert((S == "on_sale" || S == "sold_out", "check input S"));
+      if (!(S == "on_sale" || S == "sold_out")) {
+        quitf(_wa, "check input S failed");
+      }
     }
     inf.readEof();
 
