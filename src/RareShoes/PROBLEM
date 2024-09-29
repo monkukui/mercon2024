@@ -14,5 +14,5 @@ problem(
     wiki_name="問題/ナンってナン回言った？",
     assignees=["tubuann", "wakuwinmail"],
     need_custom_judge=False,
-    reference_solution="writer_4ts",
+    reference_solution="Tei_AC",
 )
