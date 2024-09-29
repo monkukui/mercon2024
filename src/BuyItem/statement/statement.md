@@ -32,8 +32,8 @@ $u_N$ $v_N$ $h_N$
 - ${@constraints.MIN_V} \leq v_i \leq {@constraints.MAX_V}$
 - ${@constraints.MIN_H} \leq h_i \leq {@constraints.MAX_H}$
 - $i \neq j$ のとき、$(u_i, v_i) \neq (u_j, v_j)$
+- $i \neq j$ のとき、$h_i \neq h_j$
 - 入力はすべて整数
-- 入力は、幸福度の合計が最大となるような購入方法が一意に定まることが保証される
 
 
 ### 出力形式
