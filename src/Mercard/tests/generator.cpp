@@ -7,6 +7,7 @@
 #include <vector>
 #include <utility>
 #include <random>
+#include <set>
 #include "../../../common/xrand.h"
 #include "constraints.hpp"
 using namespace std;
@@ -23,6 +24,7 @@ int random_max_NX_just_X_few_pattern_num = 5;
 int random_max_NX_all_A_num = 2;
 int random_max_NXA_num = 1;
 int random_max_NX_all_A_use_same_A_num = 3;
+int random_max_NX_few_A_num = 3;
 
 void random_max_NX(int casenum) {
     std::string file_name="10_random_max_NX"+std::to_string(casenum)+".in";
@@ -256,6 +258,44 @@ void random_max_NX_all_A_use_same_A(int casenum) {
     output << std:: endl;
 }
 
+void random_max_NX_few_A(int casenum) {
+    std::string file_name="21_random_max_NX_few_A"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
+
+    int N = MAX_N, X = MAX_X;
+    output<< N << ' ' << X << std::endl;
+    set<int> temp;
+    int each_size = Rnd.NextInt(9, 13);;
+    while (temp.size() != (N + each_size - 1) / each_size) {
+        temp.insert(Rnd.NextInt(MIN_A, X));
+    }
+    vector<int> A;
+    for (auto itr = temp.begin(); itr != temp.end(); itr++) {
+        for (int i = 0; i < each_size; ++i) {
+            A.push_back(*itr);
+            if (A.size() == N) {
+                break;
+            }
+        }
+        if (A.size() == N) {
+            break;
+        }
+    }
+    std::random_device rd;  // 乱数生成器
+    std::mt19937 g(rd());   // メルセンヌ・ツイスター乱数エンジン
+
+    // 配列の要素をシャッフル
+    std::shuffle(A.begin(), A.end(), g);
+
+    for (int i = 0; i < N; i++) {
+        output<< A.at(i);
+        if (i != N - 1) {
+            output << ' ';
+        }
+    }
+    output << std:: endl;
+}
+
 int main() {
     for (int i = 0; i < random_max_NX_testcase_num; i++) {
         random_max_NX(i);
@@ -286,6 +326,9 @@ int main() {
     }
     for (int i = 0; i < random_max_NX_all_A_use_same_A_num; i++) {
         random_max_NX_all_A_use_same_A(i);
+    }
+    for (int i = 0; i < random_max_NX_few_A_num; i++) {
+        random_max_NX_few_A(i);
     }
     max_NXA(1);
     return 0;
