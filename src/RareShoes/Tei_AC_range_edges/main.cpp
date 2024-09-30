@@ -132,7 +132,7 @@ public:
 
 
 int main() {
-    // シンプルな二部マッチング解 O(NM√(N+M))
+    // 区間辺二部マッチング解 O(N^1.5logN)
     int N, M;
     cin >> N >> M;
     vector<pint> XY(N);
