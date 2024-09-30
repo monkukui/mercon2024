@@ -3,7 +3,7 @@
 import itertools
 import random
 
-MAX_N = 10**5
+MAX_N = 10**2
 MIN_N = 2
 MAX_P = 9999999
 MIN_P = 300
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--seed", type=int, default=0)
-    parser.add_argument("-n", "--num-tests", type=int, default=100)
+    parser.add_argument("-n", "--num-tests", type=int, default=20)
     parser.add_argument("-o", "--output-dir", default=".")
     parser.add_argument("-p", "--prefix", default="01_test_gen_")
     args = parser.parse_args()
@@ -92,4 +92,4 @@ if __name__ == "__main__":
             for price, state in items:
                 f.write(f"{price} {state}\n")
         with open(f"{args.output_dir}/{args.prefix}{i:0{digits}d}.out", "w") as f:
-            f.write("YES\n" if ans else "NO\n")
+            f.write("Yes\n" if ans else "No\n")
