@@ -79,8 +79,12 @@ int main() {
 
             if (casenum % 2 == 0) Rnd.Shuffle(perm.begin(),perm.end());
             for(int i=0;i<n;++i){
-                output<<perm[i]+1<<" ";
+                output<<perm[i]+1;
+                if (i != n - 1) {
+                    output<<" ";
+                }
             }
+            output<<endl;
 
             output.close();
         }
