@@ -13,6 +13,7 @@
 using namespace std;
 
 XRand Rnd(334);
+int random_small_N_num = 20;
 int random_max_NX_testcase_num = 2;
 int random_max_N_testcase_num = 2;
 int random_max_X_testcase_num = 2;
@@ -28,6 +29,22 @@ int random_max_NX_few_A_num = 2;
 int random_few_max_pattern1_num = 4;
 int random_few_max_pattern2_num = 4;
 int random_few_max_pattern3_num = 4;
+
+void random_small_N(int casenum) {
+    std::string file_name="09_random_small_N"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
+
+    int N = Rnd.NextInt(MIN_N, 25), X = MAX_X;
+    output<< N << ' ' << X << std::endl;
+    for (int i = 0; i < N; i++) {
+        int A =Rnd.NextInt(MIN_A, X);
+        output<< A;
+        if (i != N - 1) {
+            output << ' ';
+        }
+    }
+    output << std:: endl;
+}
 
 void random_max_NX(int casenum) {
     std::string file_name="10_random_max_NX"+std::to_string(casenum)+".in";
@@ -407,6 +424,9 @@ void random_few_max_pattern3(int casenum) {
 }
 
 int main() {
+    for (int i = 0; i < random_small_N_num; ++i) {
+        random_small_N(i);
+    }
     for (int i = 0; i < random_max_NX_testcase_num; i++) {
         random_max_NX(i);
     }
