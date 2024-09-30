@@ -515,6 +515,8 @@ void XRand::Shuffle(RandomAccessIterator first, RandomAccessIterator last) {
     }
 }
 
+#endif  // #ifndef XRAND_H_
+
 int main() {
     int n, m; cin >> n >> m;
     assert(1 <= n and n <= 200000);
