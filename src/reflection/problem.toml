@@ -1,5 +1,5 @@
 # problem id (it is used for the name of output html file)
-id = "F"
+id = "C"
 
 # pato to a statement, output params
 params_path = "./tests/constraints.hpp"

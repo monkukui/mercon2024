@@ -17,6 +17,7 @@
 
 初期座標 $(s_x, s_y)$ が与えられるので時刻 $T$ 秒での点の座標を求めよ。
 
+
 ### 入力形式
 入力は以下の形式で与えられる。
 
@@ -29,8 +30,9 @@ $s_x$ $s_y$
 
 - 入力は全て整数
 - ${@constraints.MIN_WHT} \leq W, H, T \leq {@constraints.MAX_WHT}$
-- ${@constraints.MIN_WHT} \leq s_y \leq H$
 - ${@constraints.MIN_WHT} \leq s_x \leq W$
+- ${@constraints.MIN_WHT} \leq s_y \leq H$
+
 
 
 ### 出力形式

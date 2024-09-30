@@ -13,6 +13,6 @@ for _ in range(n):
         min_p_on_sale = min(min_p_on_sale, price)
 
 if max_p_sold_out <= p < min_p_on_sale:
-    print("YES")
+    print("Yes")
 else:
-    print("NO")
+    print("No")
