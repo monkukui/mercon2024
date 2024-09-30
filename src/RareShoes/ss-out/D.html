@@ -114,10 +114,9 @@
     <div >
         <h2>D:レアシューズ</h2>
 <h3>問題</h3>
-<p>あなたは「メルカリ」のデータサイエンティストの一員です。メルカリでは、数多くの商品が出品され、ユーザーたちがそれを購入しています。今回、特にレアなシューズの出品活動に注目しています。</p>
-<p>ある期間に、N人の出品者が1つずつレアなシューズを出品していました。各商品には、出品開始時間 $x_i$ と出品終了時間 $y_i$ が設定されています。</p>
-<p>また、M人の購入希望者が存在し、彼らはそれぞれの購入希望時間 $z_j$ 時にメルカリを開き、商品を検索します。 $z_j$ 時間に出品されている商品を購入することができます。</p>
-<p>あなたのミッションは、データを分析し、最大で何人の購入希望者が商品を購入できるかを求めることです。</p>
+<p>メルカリには $N$ 個のレアシューズが存在し、$i$ 番目 $(1 \leq i \leq N)$ のレアシューズは、時刻 $x_i$ 時間に出品され、時刻 $y_i + 0.5$ に出品が終了します。<br />
+また、$M$ 人のユーザーがレアシューズを購入しようとしています。$j$ 番目 $(1 \leq j \leq M)$ のユーザーは、時刻 $z_j$ にレアシューズを購入することを希望しており、 $x_i \leq z_j \leq y_i$ を満たすとき、$i$ 番目のレアシューズを購入することができます。ただし、各ユーザーは $1$ つしかレアシューズを購入せず、購入されたレアシューズは他のユーザーが購入することはできなくなります。</p>
+<p>各レアシューズをどのユーザーが購入するかを自由に選択できるとき、 最大で何人のユーザーがレアシューズを購入できるかを求めてください。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
 <pre class="input-format"><code class="language-input-format">$N$ $M$
@@ -132,40 +131,44 @@ $z_M$
 </code></pre>
 <h3>制約</h3>
 <ul>
-<li>入力は全て整数</li>
 <li>$1 \leq N,M \leq 200{,}000$</li>
 <li>$0 \leq x_i \leq y_i \leq 10^{9}$</li>
 <li>$0 \leq z_j \leq 10^{9}$</li>
+<li>入力は全て整数</li>
 </ul>
 <h3>出力形式</h3>
 <p>答えを整数として出力せよ。</p>
 <h3>Sample Input 1</h3>
-<pre class="input-format"><code class="language-input-format">3
-NAN
+<pre class="input-format"><code class="language-input-format">1 1
+0 0
+100
 </code></pre>
 <h3>Sample Output 1</h3>
-<pre class="input-format"><code class="language-input-format">1
+<pre class="input-format"><code class="language-input-format">0
 </code></pre>
 <h3>Sample Input 2</h3>
-<pre class="input-format"><code class="language-input-format">3
-ANA
+<pre class="input-format"><code class="language-input-format">1 1
+0 0
+100
 </code></pre>
 <h3>Sample Output 2</h3>
 <pre class="input-format"><code class="language-input-format">0
 </code></pre>
 <h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">12
-NAAAAAAAANAN
+<pre class="input-format"><code class="language-input-format">1 1
+0 0
+100
 </code></pre>
 <h3>Sample Output 3</h3>
-<pre class="input-format"><code class="language-input-format">2
+<pre class="input-format"><code class="language-input-format">0
 </code></pre>
 <h3>Sample Input 4</h3>
-<pre class="input-format"><code class="language-input-format">50
-ANANNANNANNANNANNNNANNNANNANNNANNANAANNNANNNAAANAN
+<pre class="input-format"><code class="language-input-format">1 1
+0 0
+100
 </code></pre>
 <h3>Sample Output 4</h3>
-<pre class="input-format"><code class="language-input-format">14
+<pre class="input-format"><code class="language-input-format">0
 </code></pre>
     </div>
     

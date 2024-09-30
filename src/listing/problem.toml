@@ -15,6 +15,6 @@ markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 # write constraints
 [constraints]
     MIN_N = 2
-    MAX_N = 100000
-    MIN_p = 300
-    MAX_p = 9999999
+    MAX_N = 100
+    MIN_PC = 300
+    MAX_PC = 9999999

@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 # テストケースの計画
 # 合計30ケース
 # -  2ケース / サンプル
@@ -23,6 +25,7 @@ MAX_XY = 10**9
 MIN_Z = 0
 MAX_Z = 10**9
 
+random.seed(0)
 
 # NとMが同じケースを生成する, x, y, zは一様ランダム
 def generate_random_case_N_M_equal_random():
@@ -52,11 +55,14 @@ def generate_random_case_N_M_equal_center():
 
     entries = []
     for _ in range(N):
-        a = int(random.gauss(XY_CENTER, SIGMA))
-        b = int(random.gauss(XY_CENTER, SIGMA))
-        x = min(a, b)
-        y = max(a, b)
-        entries.append((x, y))
+        while True:
+            a = int(random.gauss(XY_CENTER, SIGMA))
+            b = int(random.gauss(XY_CENTER, SIGMA))
+            x = min(a, b)
+            y = max(a, b)
+            if 0 <= x and y <= MAX_XY:
+                entries.append((x, y))
+                break
 
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
 
@@ -118,7 +124,7 @@ def write_case_to_file(filename, N, M, entries, queries):
 # - 10ケース / Mが少ない・Nが多い & ランダム
 
 if __name__ == "__main__":
-    output_dir = "./tests"
+    output_dir = "./"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
