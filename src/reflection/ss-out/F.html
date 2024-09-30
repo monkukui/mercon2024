@@ -114,9 +114,9 @@
     <div >
         <h2>反射</h2>
 <h3>問題</h3>
-<p>$H \times W$ のディスプレイ内を点が動くスクリーンセーバーを開発した。点は $x$ 軸とのなす角 $45 \tcdegree$ で進み、$1$ 秒あたり $x$ 座標と $y$ 座標がそれぞれ $1$ ずつ変化するように実装されている。そして、この点は普通の光と同じように真っすぐ進み、画面端に到達すると同じ速度で反射する。</p>
-<p>経過時間 $T$ と初期座標 $(s_x, s_y)$ が与えられるので $T$ 秒後に点座標を一行で出力せよ。</p>
-<p>例えば、 $W=4, H=3, T=7, s_x=2, s_y=0$ の時は、以下のような軌跡を描き、 $T$ 秒後には $(1, 1)$ に存在している。</p>
+<p>高さ $H$ cm、幅 $W$ cmのディスプレイがあります。このディスプレイ内を大きさが無視できるほど小さい点が動くスクリーンセーバーを開発しました。ディスプレイの左上から右に $x$ cm、右に $y$ cm
+時刻 $0$ 秒の時に点は $x$ 軸とのなす角 $45 \tcdegree$ で進み、$1$ 秒あたり $x$ 座標と $y$ 座標がそれぞれ $1$ ずつ変化するように実装されている。そして、この点は普通の光と同じように真っすぐ進み、画面端に到達すると同じ速度で反射する。</p>
+<p>初期座標 $(s_x, s_y)$ が与えられるので $T$ 秒後の点の座標を求めよ。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
 <pre class="input-format"><code class="language-input-format">$W$ $H$ $T$
@@ -130,8 +130,10 @@ $s_x$ $s_y$
 <li>$1 \leq s_x \leq W$</li>
 </ul>
 <h3>出力形式</h3>
-<p>答えの座標を $ans_x$ $ans_y$ を空白区切りで一行に出力せよ。
+<p>答えの座標が $(ans_x, ans_y)$ のとき次の形式で出力せよ。
 なお、答えが $32$ bit 整数に収まらないことがある事に注意せよ。</p>
+<pre class="input-format"><code class="language-input-format">$ans_x$ $ans_y$
+</code></pre>
 <h3>入力例 1</h3>
 <pre class="input-format"><code class="language-input-format">4 3 7
 2 0
@@ -139,6 +141,7 @@ $s_x$ $s_y$
 <h3>出力例 1</h3>
 <pre class="input-format"><code class="language-input-format">1 1
 </code></pre>
+<p>$W=4, H=3, T=7, s_x=2, s_y=0$ の時は、以下のような軌跡を描き、 $T$ 秒後には $(1, 1)$ に存在している。</p>
 <h3>入力例 2</h3>
 <pre class="input-format"><code class="language-input-format">3 3 10
 0 1
