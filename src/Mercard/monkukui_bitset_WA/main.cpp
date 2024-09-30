@@ -43,7 +43,7 @@ int main() {
             for (int i = 0; i < 3; i++) {
                 int e = b[i];
                 amount += e;
-                if (amount < x) {
+                if (e < x) {
                     // 後続で一つでも 1 以上があるとだめ
                     for (int j = i + 1; j < 3; j++) {
                         if (b[j] > 0) {

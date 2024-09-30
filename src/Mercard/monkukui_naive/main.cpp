@@ -26,7 +26,7 @@ int main() {
             tmp += point * a[p[i]];
             if (sum >= x) {
                 sum -= x;
-                if (point < 4) point++;
+                if (point < 3) point++;
             }
         }
         if (ans < tmp) ans = tmp;
