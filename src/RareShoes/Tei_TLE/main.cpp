@@ -109,6 +109,7 @@ struct HopcroftKarp {
 
 
 int main() {
+    // シンプルな二部マッチング解 O(NM√(N+M))
     ll N, M;
     cin >> N >> M;
     vector<pll> XY(N);
