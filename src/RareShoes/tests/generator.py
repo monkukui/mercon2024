@@ -68,6 +68,25 @@ def generate_random_case_N_M_equal_center():
 
     return N, M, entries, queries
 
+# NとMが同じケースを生成する
+def generate_random_case_congest():
+    small = random.randint(10 * 7, 10 * 8)
+    N = random.randint(MAX_N - small, MAX_N)
+    M = N
+
+    entries = []
+    for _ in range(N):
+        a = random.randint(MIN_XY, MAX_XY)
+        b = random.randint(MIN_XY, MAX_XY)
+        x = min(a, b)
+        y = max(a, b)
+        entries.append((x, y))
+    MID = MAX_Z // 2
+    queries = [random.randint(MID - 10 ** 8, MID + 10 ** 8) for _ in range(M)]
+
+    return N, M, entries, queries
+
+
 
 # Nが小さい・Mが大きいケースを生成する, x, y, zは一様ランダム
 def generate_random_case_N_small_M_big():
@@ -86,6 +105,7 @@ def generate_random_case_N_small_M_big():
     queries = [random.randint(MIN_Z, MAX_Z) for _ in range(M)]
 
     return N, M, entries, queries
+
 
 
 # Nが大きい・Mが小さいケースを生成する, x, y, zは一様ランダム
@@ -138,6 +158,12 @@ if __name__ == "__main__":
     for i in range(10):
         N, M, entries, queries = generate_random_case_N_M_equal_center()
         filename = os.path.join(output_dir, f"20_N_M_equal_center_{i:02d}.in")
+        write_case_to_file(filename, N, M, entries, queries)
+
+    # - 5ケース / NとMが同じ & Mが真ん中に集中
+    for i in range(10):
+        N, M, entries, queries = generate_random_case_congest()
+        filename = os.path.join(output_dir, f"20_congest_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
     # -  10ケース / Nが少ない・Mが多い & ランダム
