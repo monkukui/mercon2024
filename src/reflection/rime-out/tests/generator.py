@@ -18,8 +18,8 @@ def main():
         w = random.randint(1, 1000)
         h = random.randint(1, 1000)
         t = random.randint(1, 1000)
-        s_x = random.randint(1, 1000)
-        s_y = random.randint(1, 1000)
+        s_x = random.randint(0, w)
+        s_y = random.randint(0, h)
         with open(f"small_{i}.in", "w") as f:
             f.write(f"{w} {h} {t}\n{s_x} {s_y}\n")
 
@@ -28,8 +28,8 @@ def main():
         w = random.randint(1, 100000000)
         h = random.randint(1, 100000000)
         t = random.randint(1, 100000000)
-        s_x = random.randint(1, 100000000)
-        s_y = random.randint(1, 100000000)
+        s_x = random.randint(0, w)
+        s_y = random.randint(0, h)
         with open(f"medium_{i}.in", "w") as f:
             f.write(f"{w} {h} {t}\n{s_x} {s_y}\n")
 
@@ -38,8 +38,8 @@ def main():
         w = random.randint(1, 1000000000000)
         h = random.randint(1, 1000000000000)
         t = random.randint(1, 1000000000000)
-        s_x = random.randint(1, 1000000000000)
-        s_y = random.randint(1, 1000000000000)
+        s_x = random.randint(0, w)
+        s_y = random.randint(0, h)
         with open(f"large_{i}.in", "w") as f:
             f.write(f"{w} {h} {t}\n{s_x} {s_y}\n")
 

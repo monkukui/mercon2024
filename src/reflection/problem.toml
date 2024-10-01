@@ -13,3 +13,4 @@ markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 [constraints]
     MIN_WHT = 1
     MAX_WHT = 1000000000000
+    MIN_XY = 0
