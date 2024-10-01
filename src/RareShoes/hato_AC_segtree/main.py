@@ -108,7 +108,6 @@ a = []
 for i in range(n):
     x,y = map(int,input().split())
     e.append((x,-1,y))
-    e.append((y,1,y))
     a.append(x)
     a.append(y)
 for i in range(m):
@@ -121,21 +120,23 @@ d = {a[i]:i for i in range(len(a))}
 ans = 0
 st = segtree([0 for i in range(len(a))],operator.add,0)
 e.sort()
+
+def f(b):
+    if b >= 1:
+        return 0
+    else:
+        return 1
+
+
 for t,event,x in e:
     if event == -1:
         dx = d[x]
         st.set(dx,st.get(dx)+1)
-    elif event == 1:
-        pass
     else:
         dt = d[t]
-        if st.prod(dt,len(a)) >= 1:
-            def f(b):
-                if b >= 1:
-                    return 0
-                else:
-                    return 1
-            q = st.max_right(dt,f)
-            ans += 1
-            st.set(q,st.get(q)-1)
+        q = st.max_right(dt,f)
+        if q == len(a):
+            continue
+        ans += 1
+        st.set(q,st.get(q)-1)
 print(ans)
