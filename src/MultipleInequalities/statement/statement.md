@@ -32,7 +32,7 @@ $x_{M - 1}$ $y_{M - 1}$
 - $1 \leq y_i \leq M$
 - $x_i \neq y_i$
 - <span style="color: red;">$i \neq j$ ならば $y_i \neq y_j$</span>
-- <span style="color: red;">$x_i = x_j$ $(i < j)$ を満たす $i$, $j$ の組は高々 1 つ</span>
+- <span style="color: red;">$x_i = x_j$ $(i < j)$ を満たす $i$, $j$ の組は高々 $1$ つ</span>
 
 ### 出力形式
 不等式をすべて満たすような数列 B を作ることができるなら `Yes` を、できないなら `No` を一行に出力してください。
