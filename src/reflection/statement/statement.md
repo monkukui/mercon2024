@@ -31,8 +31,8 @@ $s_x$ $s_y$
 
 - 入力は全て整数
 - ${@constraints.MIN_WHT} \leq W, H, T \leq {@constraints.MAX_WHT}$
-- ${@constraints.MIN_WHT} \leq s_x \leq W$
-- ${@constraints.MIN_WHT} \leq s_y \leq H$
+- ${@constraints.MIN_XY} \leq s_x \leq W$
+- ${@constraints.MIN_XY} \leq s_y \leq H$
 
 
 
