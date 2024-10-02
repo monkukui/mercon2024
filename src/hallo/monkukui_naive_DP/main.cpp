@@ -233,7 +233,6 @@ XRand rnd(285);
 
 int main() {
     lint n, m; cin >> n >> m;
-    assert(m * m <= 1000000);
     vector<lint> x(n), d(n), c(n);
     map<pair<int, int>, lint> mp;
 
