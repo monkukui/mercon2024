@@ -39,9 +39,9 @@ $X_1 X_2 \ldots X_N$
 ### 制約
 
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
+- $1 \leq K \leq N$
 - $1 \leq u_i \lt v_i \leq N$
 - 与えられるグラフは木
-- $1 \leq K \leq N$
 - $1 \leq X_j \leq N$
 - $X_1, X_2, \ldots, X_N$ はすべて異なる
 - 入力はすべて整数
