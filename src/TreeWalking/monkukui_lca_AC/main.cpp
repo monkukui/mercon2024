@@ -623,7 +623,7 @@ int main() {
         return 0;
     }
 
-    vector<vector<int>> heightToNode(n);
+    vector<vector<int>> heightToNode(n + 1);
     for (int i = 0; i < n; i++) {
         heightToNode[height[i]].emplace_back(i);
     }
