@@ -33,7 +33,7 @@ def main():
                 for i in range(3):
                     e = b[i]
                     amount += e
-                    if e < x:
+                    if amount < x:
                         for j in range(i + 1, 3):
                             if b[j] > 0:
                                 is_valid = False
