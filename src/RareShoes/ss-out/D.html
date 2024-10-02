@@ -114,12 +114,12 @@
     <div >
         <h2>D:レアシューズ</h2>
 <h3>問題</h3>
-<p>メルカリには $N$ 個のレアシューズが存在し、$i$ 番目 $(1 \leq i \leq N)$ のレアシューズは、時刻 $x_i$ 時間に出品され、時刻 $y_i + 0.5$ に出品が終了します。<br />
+<p>メルカリには $N$ 個のレアシューズが存在し、$i$ 番目 $(1 \leq i \leq N)$ のレアシューズは、時刻 $x_i$ に出品され、時刻 $y_i$ に出品が終了します。
 また、$M$ 人のユーザーがレアシューズを購入しようとしています。$j$ 番目 $(1 \leq j \leq M)$ のユーザーは、時刻 $z_j$ にレアシューズを購入することを希望しており、 $x_i \leq z_j \leq y_i$ を満たすとき、$i$ 番目のレアシューズを購入することができます。ただし、各ユーザーは $1$ つしかレアシューズを購入せず、購入されたレアシューズは他のユーザーが購入することはできなくなります。</p>
 <p>各レアシューズをどのユーザーが購入するかを自由に選択できるとき、 最大で何人のユーザーがレアシューズを購入できるかを求めてください。</p>
 <h3>入力形式</h3>
 <p>入力は以下の形式で与えられる。</p>
-<pre class="input-format"><code class="language-input-format">$N$ $M$
+<pre><code class="language-math">$N$ $M$
 $x_1$ $y_1$
 $x_2$ $y_2$
 $\dots$
@@ -131,7 +131,7 @@ $z_M$
 </code></pre>
 <h3>制約</h3>
 <ul>
-<li>$1 \leq N,M \leq 200{,}000$</li>
+<li>$1 \leq N,M \leq 100{,}000$</li>
 <li>$0 \leq x_i \leq y_i \leq 10^{9}$</li>
 <li>$0 \leq z_j \leq 10^{9}$</li>
 <li>入力は全て整数</li>
@@ -140,11 +140,11 @@ $z_M$
 <p>答えを整数として出力せよ。</p>
 <h3>Sample Input 1</h3>
 <pre class="input-format"><code class="language-input-format">1 1
-0 0
-100
+0 10
+5
 </code></pre>
 <h3>Sample Output 1</h3>
-<pre class="input-format"><code class="language-input-format">0
+<pre class="input-format"><code class="language-input-format">1
 </code></pre>
 <h3>Sample Input 2</h3>
 <pre class="input-format"><code class="language-input-format">1 1
@@ -155,20 +155,30 @@ $z_M$
 <pre class="input-format"><code class="language-input-format">0
 </code></pre>
 <h3>Sample Input 3</h3>
-<pre class="input-format"><code class="language-input-format">1 1
-0 0
-100
+<pre class="input-format"><code class="language-input-format">5 5
+0 1
+1 2
+3 4
+5 6
+2 3
+4
+1
+2
+3
+5
 </code></pre>
 <h3>Sample Output 3</h3>
-<pre class="input-format"><code class="language-input-format">0
+<pre class="input-format"><code class="language-input-format">5
 </code></pre>
 <h3>Sample Input 4</h3>
-<pre class="input-format"><code class="language-input-format">1 1
-0 0
-100
+<pre class="input-format"><code class="language-input-format">2 2
+1 100
+2 10
+20
+5
 </code></pre>
 <h3>Sample Output 4</h3>
-<pre class="input-format"><code class="language-input-format">0
+<pre class="input-format"><code class="language-input-format">2
 </code></pre>
     </div>
     

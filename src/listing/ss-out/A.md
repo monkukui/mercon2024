@@ -1,3 +1,6 @@
+
+
+
 ## A:メルカリで出品
 
 ### 問題
@@ -29,8 +32,8 @@ $C_N$ $S_N$
 
 ### 制約
 
-- ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
-- ${@constraints.MIN_PC} \leq P, C_i \leq {@constraints.MAX_PC}$
+- $2 \leq N \leq 100$
+- $300 \leq P, C_i \leq 9{,}999{,}999$
 - $N, P, C_i$ は正の整数
 - $S_i$ は `sold_out` または `on_sale`
 - 販売中のスマホが少なくとも 1 つ存在する
@@ -40,4 +43,68 @@ $C_N$ $S_N$
 
 メルくんが決めた値段 $P$ が条件を満たすなら `Yes` を、そうでないなら `No` を一行に出力してください。
 
-{@samples.all}
+
+
+### Sample Input 1
+```
+4 500
+550 on_sale
+600 on_sale
+300 sold_out
+700 on_sale
+```
+
+
+
+### Sample Output 1
+```
+Yes
+```
+
+
+
+
+
+
+### Sample Input 2
+```
+2 20000
+20000 sold_out
+50000 on_sale
+```
+
+
+
+### Sample Output 2
+```
+No
+```
+
+
+
+
+
+
+### Sample Input 3
+```
+4 4000
+1000 sold_out
+1800 on_sale
+2000 sold_out
+4500 on_sale
+```
+
+
+
+### Sample Output 3
+```
+No
+```
+
+
+
+
+
+
+
+
