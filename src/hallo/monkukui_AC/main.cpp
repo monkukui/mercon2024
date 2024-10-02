@@ -574,14 +574,21 @@ struct SegmentTree{
     }
 };
 
-
 int main() {
     int n, m; cin >> n >> m;
+    assert(1 <= n and n <= 100000);
+    assert(1 <= m and m <= 100000);
     vector<lint> x(n);
     vector<lint> d(n);
     vector<lint> c(n);
+    set<pair<int, int>> st;
     for (int i = 0; i < n; i++) {
         cin >> x[i] >> d[i] >> c[i];
+        assert(st.find(make_pair(x[i], d[i])) == st.end());
+        st.insert(make_pair(x[i], d[i]));
+        assert(1 <= d[i] and d[i] <= m);
+        assert(1 <= x[i] and x[i] <= 100000);
+        assert(1 <= c[i] and c[i] <= 100000);
         x[i]--;
         d[i]--;
     }
@@ -619,6 +626,8 @@ int main() {
         sg.update(u, max_value + c);
     }
 
-    cout << sg.query(0, 200010) << endl;
+    lint ans = sg.query(0, 200010);
+    assert(ans != -INF);
+    cout << ans << endl;
     return 0;
 }
