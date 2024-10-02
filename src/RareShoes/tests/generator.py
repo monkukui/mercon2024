@@ -149,33 +149,33 @@ if __name__ == "__main__":
         os.makedirs(output_dir)
 
     # - 10ケース / NとMが同じくらい & ランダム
-    for i in range(5):
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_M_equal_random()
         filename = os.path.join(output_dir, f"10_N_M_equal_random_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
     # - 10ケース / NとMが同じくらい & 中心にたくさんあるパターン
-    for i in range(5):
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_M_equal_center()
         filename = os.path.join(output_dir, f"20_N_M_equal_center_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
     # - 5ケース / NとMが同じ & Mが真ん中に集中
-    for i in range(5):
+    for i in range(10):
         N, M, entries, queries = generate_random_case_congest()
         filename = os.path.join(output_dir, f"20_congest_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
     # -  10ケース / Nが少ない・Mが多い & ランダム
-    for i in range(5):
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_small_M_big()
         filename = os.path.join(output_dir, f"30_N_small_M_big_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
     # -  10ケース / Mが少ない・Nが多い & ランダム
-    for i in range(5):
+    for i in range(10):
         N, M, entries, queries = generate_random_case_N_big_M_small()
         filename = os.path.join(output_dir, f"40_N_big_M_small_{i:02d}.in")
         write_case_to_file(filename, N, M, entries, queries)
 
-    print(f"40 cases have been written to the '{output_dir}' directory.")
+    print(f"50 cases have been written to the '{output_dir}' directory.")
