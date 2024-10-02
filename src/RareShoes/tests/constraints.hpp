@@ -4,7 +4,7 @@
 #pragma once
 
 const long long int MIN_NM = 1;
-const long long int MAX_NM = 200000;
+const long long int MAX_NM = 100000;
 const long long int MIN_XY = 0;
 const long long int MAX_XY = 1000000000;
 const long long int MIN_Z = 0;
