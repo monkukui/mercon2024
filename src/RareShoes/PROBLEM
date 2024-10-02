@@ -8,7 +8,7 @@
 
 pid='A'
 problem(
-    time_limit=6.0,
+    time_limit=3.0,
     id=pid,
     title=pid+": sample-ナンってナン回言った？",
     wiki_name="問題/ナンってナン回言った？",

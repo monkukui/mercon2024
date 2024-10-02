@@ -17,9 +17,9 @@ import random
 # x, y: 0 <= x, y <= 10^9
 # z: 0 <= z <= 10^9
 MIN_N = 1
-MAX_N = 200000
+MAX_N = 100000
 MIN_M = 1
-MAX_M = 200000
+MAX_M = 100000
 MIN_XY = 0
 MAX_XY = 10**9
 MIN_Z = 0
