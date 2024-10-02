@@ -1,10 +1,18 @@
+#include <cstdio>
 #include <iostream>
-#include <string>
-#include <cassert>
-#include "../../../common/testlib.h"
-#include "constraints.hpp"
+#include <fstream>
+#include <algorithm>
+#include <cstring>
+#include <stack>
+#include <vector>
+#include <utility>
+#include <random>
+#include <set>
+#include "../../common/xrand.h"
 #define ll long long
 using namespace std;
+
+XRand Rnd(334);
 
 // ============union_find_tree===============
 struct union_find {
@@ -71,50 +79,43 @@ struct union_find {
 };
 // =======================================
 
-int main(){
-    registerValidation();
+void random_small_N(int casenum) {
+    std::string file_name="01_random_small_"+std::to_string(casenum)+".in";
+    std::ofstream output(file_name);
 
-    int N = inf.readInt(MIN_N, MAX_N);
-    inf.readSpace();
-    int K = inf.readInt(1, N);
-    inf.readEoln();
-
-    union_find uf(N);
-    for (int i = 0; i < N - 1; ++i) {
-        int u = inf.readInt(1, N);
-        inf.readSpace();
-        int v = inf.readInt(1, N);
-        if (!(u < v)) {
-          quitf(_wa, "check input u < v");
-        }
-        inf.readEoln();
-        u -= 1, v -= 1;
-        uf.unite(u, v);
-    }
-
-    bool is_tree = true;
-    for (ll i = 0; i < N; ++i) {
-        if (!uf.same(0, i)) {
-            is_tree = false;
-        }
-    }
-    if (!is_tree) {
-        quitf(_wa, "check input is tree failed");
-    }
-
-    set<int> X;
+    int N = Rnd.NextInt(1, 8), K = Rnd.NextInt(1, N);
+    output<< N << ' ' << K << std::endl;
+    vector<int> vec;
     for (int i = 0; i < N; ++i) {
-        int x = inf.readInt(1, N);
-        X.insert(x);
-        if (i != N - 1) {
-            inf.readSpace();
+        vec.push_back(i + 1);
+    }
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(vec.begin(), vec.end(), g);
+    union_find uf(N);
+    for (ll i = 0; i < N - 1; ++i) {
+        while (true) {
+            int u = Rnd.NextInt(1, N - 1);
+            int v = Rnd.NextInt(u + 1, N);
+            if (!uf.same(u - 1, v - 1)) {
+                uf.unite(u - 1, v - 1);
+                output << u << ' ' << v << endl;
+                break;
+            }
         }
     }
-    inf.readEoln();
-    if (X.size() != N) {
-        quitf(_wa, "check all X differ failed");
+    for (int i = 0; i < N; i++) {
+        output<< vec.at(i);
+        if (i != N - 1) {
+            output << ' ';
+        }
     }
+    output << std:: endl;
+}
 
-    inf.readEof();
+int main() {
+    for (int i = 0; i < 5; ++i) {
+        random_small_N(i);
+    }
     return 0;
 }
