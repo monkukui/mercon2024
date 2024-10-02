@@ -6,6 +6,71 @@
 #define ll long long
 using namespace std;
 
+// ============union_find_tree===============
+struct union_find {
+  vector<ll> par;
+  vector<ll> tree_rank;
+  vector<ll> num;
+
+  union_find(ll n)
+  {
+    par = vector<ll>(n);
+    num = vector<ll>(n, 1);
+    tree_rank = vector<ll>(n);
+    for (ll i = 0; i < n; ++i)
+    {
+      par.at(i) = i;
+      tree_rank.at(i) = 0;
+    }
+  }
+
+  ll find(ll x)
+  {
+    if (par.at(x) == x)
+    {
+      return x;
+    }
+    else
+    {
+      return par.at(x) = find(par.at(x));
+    }
+  }
+
+  ll get_num(ll x) {
+    return num.at(find(x));
+  }
+
+  void unite(ll x, ll y)
+  {
+    x = find(x);
+    y = find(y);
+    if (x == y)
+    {
+      return;
+    }
+    if (tree_rank.at(x) < tree_rank.at(y))
+    {
+      par.at(x) = y;
+      num.at(y) = num.at(x) + num.at(y);
+    }
+    else
+    {
+      par.at(y) = x;
+      num.at(x) = num.at(x) + num.at(y);
+      if (tree_rank.at(x) == tree_rank.at(y))
+      {
+        tree_rank.at(x)++;
+      }
+    }
+  }
+
+  bool same(ll x, ll y)
+  {
+    return find(x) == find(y);
+  }
+};
+// =======================================
+
 int main(){
     registerValidation();
 
@@ -35,10 +100,12 @@ int main(){
     }
     map<ll, bool> already_y;
     map<ll, ll> cnt_x;
+    union_find uf(M);
     for (ll i = 0; i < M - 1; ++i) {
         int x = inf.readInt(1, M);
         inf.readSpace();
         int y = inf.readInt(1, M);
+        uf.unite(x - 1, y - 1);
         inf.readEoln();
         if (x == y) {
             quitf(_wa, "error: x and y must be different");
@@ -53,6 +120,15 @@ int main(){
             quitf(_wa, "error: more than two same x");
         }
         cnt_x[x] += 1;
+    }
+    bool is_tree = true;
+    for (ll i = 0; i < M; ++i) {
+        if (!uf.same(0, i)) {
+            is_tree = false;
+        }
+    }
+    if (!is_tree) {
+        quitf(_wa, "error: input is not tree");
     }
 
     inf.readEof();
