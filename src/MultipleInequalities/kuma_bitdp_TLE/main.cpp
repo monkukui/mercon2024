@@ -13,17 +13,49 @@ using namespace std;
 
 ll N, M;
 
+void dfs(vector<ll> &B, vector<vector<ll>> &connection, ll now, ll l, ll r) {
+    if (now != l) {
+        ll min_b = INF;
+        ll min_index = -1;
+        for (ll i = l; i < now; ++i) {
+            if (min_b > B.at(i)) {
+                min_b = B.at(i);
+                min_index = i;
+            }
+        }
+        connection.at(now).push_back(min_index);
+        dfs(B, connection, min_index, l, now - 1);
+    }
+    if (now != r) {
+        ll min_b = INF;
+        ll min_index = -1;
+        for (ll i = now + 1; i <= r; ++i) {
+            if (min_b > B.at(i)) {
+                min_b = B.at(i);
+                min_index = i;
+            }
+        }
+        connection.at(now).push_back(min_index);
+        dfs(B, connection, min_index, now + 1, r);
+    }
+}
+
 int main() {
     cin >> N >> M;
     vector<ll> A(N);
     for (ll i = 0; i < N; ++i) {
         cin >> A.at(i);
     }
-    vector<ll> X(M - 1), Y(M - 1);
-    for (ll i = 0; i < M - 1; ++i) {
-        cin >> X.at(i) >> Y.at(i);
-        X.at(i) -= 1, Y.at(i) -= 1;
+    vector<ll> B(M);
+    ll root = 0;
+    for (ll i = 0; i < M; ++i) {
+        cin >> B.at(i);
+        if (B.at(i) == 1) {
+            root = i;
+        }
     }
+    vector<vector<ll>> connection_B(M);
+    dfs(B, connection_B, root, 0, M - 1);
     ll P = 30;
     if (N > P) {
         ll cnt = 0;
@@ -41,19 +73,23 @@ int main() {
         if (__builtin_popcount(now) != M) {
             continue;
         }
-        vector<ll> B;
+        vector<ll> new_A;
         for (ll j = 0; j < N; ++j) {
             if ((power.at(j) & now) != 0) {
-                B.push_back(A.at(j));
+                new_A.push_back(A.at(j));
             }
         }
-        bool ok = true;
-        for (ll j = 0; j < M - 1; ++j) {
-            if (!(B.at(X.at(j)) < B.at(Y.at(j)))) {
-                ok = false;
+        ll root_A = -1;
+        ll min_A = INF;
+        for (ll j = 0; j < M; ++j) {
+            if (new_A.at(j) < min_A) {
+                min_A = new_A.at(j);
+                root_A = j;
             }
         }
-        if (ok) {
+        vector<vector<ll>> connection_A(M);
+        dfs(new_A, connection_A, root_A, 0, M - 1);
+        if (connection_B == connection_A) {
             found = true;
         }
     }
