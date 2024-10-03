@@ -65,31 +65,9 @@ void generate_random(int n, int m, string file_name) {
         else output << T[i] + 1 << " ";
     }
 
-    auto p = cartesian_tree(P);
-
-    vector<pair<int, int>> g(m, {-1, -1});
-    int r = min_element(P.begin(), P.end()) - P.begin();
-    for (int i = 0; i < m; i++) {
-        if (p[i] < 0) continue;
-        if (i < p[i]) {
-            g[p[i]].first = i;
-        }
-        if (i > p[i]) {
-            g[p[i]].second = i;
-        }
-    }
-    vector<pair<int, int>> xy;
-    for (int i = 0; i < m; i++) {
-        if (g[i].first != -1) {
-            xy.push_back({i, g[i].first});
-        }
-        if (g[i].second != -1) {
-            xy.push_back({i, g[i].second});
-        }
-    }
-    assert(xy.size() == m - 1);
-    for (int i = 0; i < m - 1; i++) {
-        output << xy[i].first + 1 << " " << xy[i].second + 1 << endl;
+    for (int i = 0; i < P.size(); i++) {
+        if (i + 1 == P.size()) output << P[i] + 1 << endl;
+        else output << P[i] + 1 << " ";
     }
 
     return;
