@@ -37,7 +37,7 @@ $B_1$ $B_2$ $\dots$ $B_M$
 - ${@constraints.MIN_N} \leq N \leq {@constraints.MAX_N}$
 - $1 \leq M \leq N$
 - $A_1, A_2 \ldots, A_N$ は、$(1, 2 \ldots, N)$ を並び替えて作られる順列
-- $A_1, A_2 \ldots, A_M$ は、$(1, 2 \ldots, M)$ を並び替えて作られる順列
+- $B_1, B_2 \ldots, B_M$ は、$(1, 2 \ldots, M)$ を並び替えて作られる順列
 
 ### 出力形式
 条件を満たす $A$ の部分列 $A^{'}$ が存在するなら `Yes` を、できないなら `No` を一行に出力してください。
