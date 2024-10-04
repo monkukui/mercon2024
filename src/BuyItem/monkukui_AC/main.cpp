@@ -527,21 +527,14 @@ int main() {
     int n; cin >> n;
     map<int, pair<int, int>> mp; // (商品, (価値, ユーザ))
     set<pair<int, int>> st;
-    map<int, int> duplicate;
     for (int i = 0; i < n; i++) {
         int u, v, h; cin >> u >> v >> h;
         st.insert(make_pair(u, v));
         if (h == mp[v].first) {
-            duplicate[v] = h;
-        }
-        mp[v] = max(mp[v], make_pair(h, u));
-    }
-
-    for (auto [v, h] : duplicate) {
-        if (h == mp[v].first) {
             cout << "wa" << endl;
             return 1;
         }
+        mp[v] = max(mp[v], make_pair(h, u));
     }
 
     // i != j ならば (u, v) != (u', v')
