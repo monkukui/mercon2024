@@ -171,7 +171,7 @@ for event in events:
     else:
         start = event[2]
         match = sorted_multiset.ge(start)
-        if match: # 購入可能
+        if match is not None: # 購入可能
             res += 1
             sorted_multiset.discard(match)
 
