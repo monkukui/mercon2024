@@ -73,4 +73,4 @@ random.seed(0)
 # large cases
 # for i in range(22, 26):
 #     N = random.randint(MAX_LARGE-100, MAX_LARGE)
-#     generate_random_test_case(i+1, N, MAX_LARGE, MAX_U, MAX_V, is_sample=False, write_to_file=True)
+#     generate_random_test_case(i+1, N, MAX_LARGE, MAX_U, MAX_H, is_sample=False, write_to_file=True)
