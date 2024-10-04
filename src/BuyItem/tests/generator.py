@@ -8,7 +8,7 @@
 
 import random
 
-MAX_LARGE = 200000
+MAX_LARGE = 50000
 MAX_SMALL = 1000
 MAX_H = 100
 MAX_U = 1000000000
@@ -55,9 +55,6 @@ def generate_random_test_case(i, N, max_u, max_v, max_h, is_sample=True, write_t
 
 random.seed(0)
 # # generate 3 samples
-# generate_random_test_case(1, 4, 2, 2, MAX_H, write_to_file=True)
-# generate_random_test_case(2, 10, 5, 5, MAX_H, write_to_file=True)
-# generate_random_test_case(3, 15, 10, 20, MAX_H, write_to_file=True)
 
 # # generate random test cases
 # for i in range(10):
