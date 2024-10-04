@@ -1,7 +1,7 @@
 ## B:購入
 
 ### 問題
-メルカリには、ユーザー $1$ からユーザー ${@constraints.MAX_U}$ までの ${@constraints.MAX_U}$ 人のユーザーがいます。また、メルカリには、商品 $1$ から商品 ${@constraints.MAX_V}$ までの ${@constraints.MAX_V}$ 個の商品が 1 つずつ出品されています。
+メルカリには、ユーザー $1$ からユーザー ${@constraints.MAX_U}$ までの ${@constraints.MAX_U}$ 人のユーザーがいます。また、メルカリには、商品 $1$ から商品 ${@constraints.MAX_V}$ までの ${@constraints.MAX_V}$ 個の商品が $1$ つずつ出品されています。
 
 はじめ、すべてのユーザーの**幸福度**は $0$ です。
 
