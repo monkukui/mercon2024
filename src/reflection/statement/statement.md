@@ -10,7 +10,7 @@
     <img src='https://github.com/user-attachments/assets/2d297379-3400-4e33-b11b-d2de3e2c8662' width='40%'>
 </center>
 
-初期座標 $(s_x, s_y)$ が与えられるので時刻 $T$ 秒での点の座標を求めよ。
+初期座標 $(s_x, s_y)$ が与えられるので時刻 $T$ 秒での点の座標を求めてください。
 
 
 ### 入力形式
