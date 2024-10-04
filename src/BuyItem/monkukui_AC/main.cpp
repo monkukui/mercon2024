@@ -525,10 +525,14 @@ int main() {
     ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
     int n; cin >> n;
+    assert((1 <= n) && (n <= 50000));
     map<int, pair<int, int>> mp; // (商品, (価値, ユーザ))
     set<pair<int, int>> st;
     for (int i = 0; i < n; i++) {
         int u, v, h; cin >> u >> v >> h;
+        assert((1 <= u) && (u <= 1000000000));
+        assert((1 <= v) && (v <= 1000000000));
+        assert((1 <= h) && (h <= 100));
         st.insert(make_pair(u, v));
         if (h == mp[v].first) {
             cout << "wa" << endl;

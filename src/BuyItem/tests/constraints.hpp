@@ -4,7 +4,7 @@
 #pragma once
 
 const long long int MIN_N = 1;
-const long long int MAX_N = 200000;
+const long long int MAX_N = 50000;
 const long long int MIN_U = 1;
 const long long int MAX_U = 1000000000;
 const long long int MIN_V = 1;
