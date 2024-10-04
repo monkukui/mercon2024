@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Problem Statement</title>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        html {
+            color: #222222;
+            font-family: "Noto Serif";
+        }
+
+        h1 {
+            font-size: 16pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            border-bottom: solid 2px #e0e0e0;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h4 {
+            font-size: 13pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        h5 {
+            font-size: 12pt;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 12pt;
+        }
+
+        li {
+            font-size: 12pt;
+        }
+
+        pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+        }
+
+        code {
+            color: #e83e8c;
+        }
+
+        code.language-input-format {
+            color: #222222;
+        }
+
+        .testcase_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #e0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-width: 480;
+            max-height: 340;
+        }
+
+        .error_pre {
+            font-size: 11pt;
+            padding: 8px;
+            border: solid 1px #f0e0e0;
+            border-radius: 4px;
+            overflow: auto;
+            max-height: 340;
+            background-color: #ffeeee;
+        }
+
+        .table tbody>tr>td.vert-aligned {
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [["$", "$"]],
+                processEscapes: true,
+                processClass: 'input-format|language-input-format'
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+</head>
+
+<body>
+    
+    <div >
+        <h2>反射</h2>
+<h3>問題</h3>
+<p>高さ $H$ cm、幅 $W$ cmのディスプレイがあります。このディスプレイ内を点が動くスクリーンセーバーを開発しました。ディスプレイの左下の座標を $(0, 0)$ とし、ディスプレイの左下から右に $x$ cm、上に $y$ cm移動した点の座標を $(x, y)$ と表します。</p>
+<p>時刻 $0$ 秒に点は $(s_x, s_y)$ にあります。はじめ、点は $(s_x, s_y)$ から $(s_x + 1, s_y + 1)$ 方向に秒速 $\sqrt[]{2}$ cmで真っすぐ進み出します。そして、この点は普通の光と同じように真っすぐ進み、画面端に到達すると同じ速度で反射します。
+例えば、$W=4, H=3, T=7, s_x=2, s_y=0$ の時は、以下のような軌跡を描き、 $T$ 秒後には $(1, 1)$ に存在しています。</p>
+<p><center>
+    <img src='https://github.com/user-attachments/assets/2d297379-3400-4e33-b11b-d2de3e2c8662' width='40%'>
+</center></p>
+<p>初期座標 $(s_x, s_y)$ が与えられるので時刻 $T$ 秒での点の座標を求めよ。</p>
+<h3>入力形式</h3>
+<p>入力は以下の形式で与えられる。</p>
+<pre><code class="language-math">$W$ $H$ $T$
+$s_x$ $s_y$
+</code></pre>
+<h3>制約</h3>
+<ul>
+<li>入力は全て整数</li>
+<li>$1 \leq W, H, T \leq 10^{12}$</li>
+<li>$0 \leq s_x \leq W$</li>
+<li>$0 \leq s_y \leq H$</li>
+</ul>
+<h3>出力形式</h3>
+<p>答えの座標が $(ans_x, ans_y)$ のとき次の形式で出力せよ。
+なお、答えが $32$ bit 整数に収まらないことがある事に注意せよ。</p>
+<pre><code class="language-math">$ans_x$ $ans_y$
+</code></pre>
+<h3>入力例 1</h3>
+<pre class="input-format"><code class="language-input-format">4 3 7
+2 0
+</code></pre>
+<h3>出力例 1</h3>
+<pre class="input-format"><code class="language-input-format">1 1
+</code></pre>
+<h3>入力例 2</h3>
+<pre class="input-format"><code class="language-input-format">3 3 10
+0 1
+</code></pre>
+<h3>出力例 2</h3>
+<pre class="input-format"><code class="language-input-format">2 1
+</code></pre>
+<h3>入力例 3</h3>
+<pre class="input-format"><code class="language-input-format">35946642085 995999573746 320560596816
+35502468318 256917219223
+</code></pre>
+<h3>出力例 3</h3>
+<pre class="input-format"><code class="language-input-format">3403355716 577477816039
+</code></pre>
+    </div>
+    
+</body>
+
+</html>

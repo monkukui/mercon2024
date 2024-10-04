@@ -5,3 +5,4 @@
 
 const long long int MIN_WHT = 1;
 const long long int MAX_WHT = 1000000000000;
+const long long int MIN_XY = 0;

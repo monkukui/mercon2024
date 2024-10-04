@@ -39,7 +39,7 @@ int main() {
         if (i >= X) {
             for (int j = 0; j < 2 * X; j++) {
                 ans = max(ans, dp[i][j]);
-                if (j >= X && dp[i][j] != -1) {
+                if (j + i >= 2 * X && dp[i][j] != -1) {
                     ans = max(ans, dp[i][j] + 3 * (sum_a - i - j));
                 }
             }

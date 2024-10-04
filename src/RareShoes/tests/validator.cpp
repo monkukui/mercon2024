@@ -1,24 +1,32 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-#include "../../common/testlib.h"
+#include "../../../common/testlib.h"
 #include "constraints.hpp"
 using namespace std;
 
 int main(){
-    registerValidation();
+  registerValidation();
 
-    int N = inf.readInt(MIN_N, MAX_N);
+  int N = inf.readInt(MIN_NM, MAX_NM);
+  inf.readSpace();
+  int M = inf.readInt(MIN_NM, MAX_NM);
+  inf.readEoln();
+  for (int i = 0; i < N; ++i) {
+    int x = inf.readInt(MIN_XY, MAX_XY);
+    inf.readSpace();
+    int y = inf.readInt(MIN_XY, MAX_XY);
     inf.readEoln();
-
-    char c;
-    for(int i=0;i<N;i++){
-      c=inf.readChar();
-      ensure(c=='A' || c=='N');
+    if (!(x <= y)) {
+      quitf(_wa, "x <= y check failed");
     }
+  }
+  for (int i = 0; i < M; ++i) {
+    int z = inf.readInt(MIN_Z, MAX_Z);
     inf.readEoln();
+  }
 
-    inf.readEof();
+  inf.readEof();
 
-    return 0;
+  return 0;
 }

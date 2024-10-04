@@ -1,5 +1,5 @@
 # problem id (it is used for the name of output html file)
-id = "F"
+id = "C"
 
 # pato to a statement, output params
 params_path = "./tests/constraints.hpp"
@@ -13,3 +13,4 @@ markdown_extensions = ["md_in_html", "tables", "fenced_code"]
 [constraints]
     MIN_WHT = 1
     MAX_WHT = 1000000000000
+    MIN_XY = 0

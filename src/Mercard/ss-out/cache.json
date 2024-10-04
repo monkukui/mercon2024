@@ -2,7 +2,13 @@
     "html": {
         "A": {
             "assets": {},
-            "contents": "652e0587e61b73ccafbf6e378a29022373325c7e147d4d1d4044933ebe65f31b"
+            "contents": "ad2be3ae992f9cce8755804480aafce54ba3b75ac383c336bd80b368b372fb4c"
+        }
+    },
+    "md": {
+        "A": {
+            "assets": {},
+            "contents": "761729212a68b6534cca6ef2e856adbdca41060446a90fc1d30e25e26a39c579"
         }
     }
 }

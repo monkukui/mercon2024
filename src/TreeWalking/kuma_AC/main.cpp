@@ -8,6 +8,71 @@
 #define pll pair<ll, ll>
 using namespace std;
 
+// ============union_find_tree===============
+struct union_find {
+  vector<ll> par;
+  vector<ll> tree_rank;
+  vector<ll> num;
+
+  union_find(ll n)
+  {
+    par = vector<ll>(n);
+    num = vector<ll>(n, 1);
+    tree_rank = vector<ll>(n);
+    for (ll i = 0; i < n; ++i)
+    {
+      par.at(i) = i;
+      tree_rank.at(i) = 0;
+    }
+  }
+
+  ll find(ll x)
+  {
+    if (par.at(x) == x)
+    {
+      return x;
+    }
+    else
+    {
+      return par.at(x) = find(par.at(x));
+    }
+  }
+
+  ll get_num(ll x) {
+    return num.at(find(x));
+  }
+
+  void unite(ll x, ll y)
+  {
+    x = find(x);
+    y = find(y);
+    if (x == y)
+    {
+      return;
+    }
+    if (tree_rank.at(x) < tree_rank.at(y))
+    {
+      par.at(x) = y;
+      num.at(y) = num.at(x) + num.at(y);
+    }
+    else
+    {
+      par.at(y) = x;
+      num.at(x) = num.at(x) + num.at(y);
+      if (tree_rank.at(x) == tree_rank.at(y))
+      {
+        tree_rank.at(x)++;
+      }
+    }
+  }
+
+  bool same(ll x, ll y)
+  {
+    return find(x) == find(y);
+  }
+};
+// =======================================
+
 //=============euler_tour============================
 //euler_tour et(connection, root);
 
@@ -120,14 +185,25 @@ struct segment_tree {
 int main() {
   ll N, K;
   cin >> N >> K;
+  assert(1 <= N && N <= 200000);
+  assert(1 <= K && K <= N);
   vector<vector<ll>> connection(N);
+  union_find uf(N);
+  bool is_tree = true;
   for (ll i = 0; i < N - 1; ++i) {
     ll U, V;
     cin >> U >> V;
+    assert(1 <= U && U < V);
+    assert(U < V && V <= N);
     U -= 1, V -= 1;
+    if (uf.same(U, V)) {
+      is_tree = false;
+    }
+    uf.unite(U, V);
     connection.at(U).push_back(V);
     connection.at(V).push_back(U);
   }
+  assert(is_tree);
   segment_tree seg(2 * N);
   euler_tour et(connection, 0);
   vector<vector<ll>> num_edge(N + 1);
@@ -136,10 +212,14 @@ int main() {
   }
   vector<ll> X(N);
   map<ll, ll> X_index;
+  set<ll> st;
   for (ll i = 0; i < N; ++i) {
     cin >> X.at(i);
     X_index[X.at(i)] = i;
+    assert(1 <= X.at(i) && X.at(i) <= N);
+    st.insert(X.at(i));
   }
+  assert(st.size() == N);
   for (ll i = K; i <= N; ++i) {
     for (ll j = 0; j < num_edge.at(i).size(); ++j) {
       ll edge = num_edge.at(i).at(j);
@@ -172,6 +252,7 @@ int main() {
       break;
     }
   }
+  assert(ans.size() == K);
   for (ll i = 0; i < ans.size(); ++i) {
     cout << ans.at(i);
     if (i != (ll)ans.size() - 1) {

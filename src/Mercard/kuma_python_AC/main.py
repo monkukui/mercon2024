@@ -25,6 +25,6 @@ for i in range(2 * X):
     if i >= X:
         for j in range(2 * X):
             ans = max(ans, dp[i][j])
-            if j >= X:
+            if i + j >= 2 * X:
                 ans = max(ans, dp[i][j] + 3 * (sum_a - i - j))
 print(ans)

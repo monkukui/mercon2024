@@ -619,6 +619,8 @@ int main() {
     }
 
 
+    if (n == 1) height[0] = 1;
+
     if (height[0] < k) {
         cout << -1 << endl;
         return 0;
