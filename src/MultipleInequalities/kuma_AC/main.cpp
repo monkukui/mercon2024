@@ -203,7 +203,7 @@ int main() {
     ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
     cin >> N >> M;
-    assert((1 <= N) && (N <= 1000));
+    assert((1 <= N) && (N <= 2000));
     assert((1 <= M) && (M <= N));
     vector<ll> A(N);
     set<ll> st;
