@@ -149,7 +149,7 @@ $A_1\ A_2\ \dots\ A_N$
 <h3>Sample Output 1</h3>
 <pre class="input-format"><code class="language-input-format">12
 </code></pre>
-<p>全ての商品の値段が同じなので商品をどの順番に買ってもポイントは最大になり、 $5$ 個の商品を全て買ったときの所持ポイントは $0.01 + 0.02 + 0.03 + 0.03 + 0.03 = 0.12$ です。 $4$ 個目と $5$ 個目の商品を買うときに増加するポイントが $A_i \times (1 + min(2, \lfloor S / X \rfloor)) \times 0.01 = 1 * (1 + min(2, \lfloor 4 / 1 \rfloor)) \times 0.01 = 0.03$ になることに注意してください。</p>
+<p>全ての商品の値段が同じなので商品をどの順番に買ってもポイントは最大になり、 $5$ 個の商品を全て買ったときの所持ポイントは $0.01 + 0.02 + 0.03 + 0.03 + 0.03 = 0.12$ です。 $4$ 個目と $5$ 個目の商品を買うときに増加するポイントが $A_i \times (1 + \text{min}(2, \lfloor S / X \rfloor)) \times 0.01 = 1 * (1 + \text{min}(2, \lfloor 4 / 1 \rfloor)) \times 0.01 = 0.03$ になることに注意してください。</p>
 <h3>Sample Input 2</h3>
 <pre class="input-format"><code class="language-input-format">6 5
 5 1 2 2 1 1
