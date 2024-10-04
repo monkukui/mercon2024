@@ -70,9 +70,9 @@ private:
         uint64_t data;
         layer *summary, **sublayers;
         layer(const uint32_t length)
-            : length(length), num_blocks((int)sqrt(length)),
-                quo(length / num_blocks), rem(length % num_blocks),
-                    _max(-1), _min(length), data(0ULL){
+                : length(length), num_blocks((int)sqrt(length)),
+                  quo(length / num_blocks), rem(length % num_blocks),
+                  _max(-1), _min(length), data(0ULL){
             if(length <= THRESHOULD) return;
             summary = new layer(num_blocks);
             sublayers = new layer*[num_blocks];
@@ -81,8 +81,8 @@ private:
             }
         }
         layer(const layer& another)
-            : length(another.length), num_blocks(another.num_blocks), quo(another.quo), rem(another.rem),
-                _max(another._max), _min(another._min), data(another.data){
+                : length(another.length), num_blocks(another.num_blocks), quo(another.quo), rem(another.rem),
+                  _max(another._max), _min(another._min), data(another.data){
             if(length <= THRESHOULD) return;
             summary = new layer(*another.summary);
             sublayers = new layer*[num_blocks];
@@ -91,9 +91,9 @@ private:
             }
         }
         layer(layer&& another)
-            : length(move(another.length)), num_blocks(move(another.num_blocks)),
-                quo(move(another.quo)), rem(move(another.rem)),
-                    _max(move(another._max)), _min(move(another._min)), data(move(another.data)){
+                : length(move(another.length)), num_blocks(move(another.num_blocks)),
+                  quo(move(another.quo)), rem(move(another.rem)),
+                  _max(move(another._max)), _min(move(another._min)), data(move(another.data)){
             if(length <= THRESHOULD) return;
             summary = another.summary, sublayers = another.sublayers;
             another.summary = nullptr, another.sublayers = nullptr;
@@ -140,11 +140,11 @@ private:
         inline int32_t min() const noexcept { return _min; }
         inline int32_t index(const uint32_t value) const noexcept {
             return (value >= rem * (quo + 1))
-                ? (rem + (value - rem * (quo + 1)) / quo) : (value / (quo + 1));
+                   ? (rem + (value - rem * (quo + 1)) / quo) : (value / (quo + 1));
         }
         inline int32_t sum(uint32_t index) const noexcept {
             return (index > rem)
-                ? (rem * (quo + 1) + (index - rem) * quo) : (index * (quo + 1));
+                   ? (rem * (quo + 1) + (index - rem) * quo) : (index * (quo + 1));
         }
         bool small_find(const int32_t value) const noexcept {
             return (data >> value) & 1ULL;
@@ -200,7 +200,7 @@ private:
             if(length <= THRESHOULD) return small_erase(value);
             if(value == _min){
                 const int32_t id = summary->min();
-                 _min = value = sum(id) + sublayers[id]->min();
+                _min = value = sum(id) + sublayers[id]->min();
             }
             const int32_t id = index(value);
             sublayers[id]->erase(value - sum(id));
@@ -296,28 +296,28 @@ public:
 
 // O(n)
 template <class T, class Compare> std::vector<int> cartesian_tree(const std::vector<T>& a, Compare comp) {
-  int n = a.size();
-  std::vector<int> res(n), prv(n), nxt(n), stk;
-  stk.reserve(n);
-  for (int i = 0; i < n; ++i) {
-    while (!stk.empty() && comp(a[i], a[stk.back()])) stk.pop_back();
-    prv[i] = stk.empty() ? -1 : stk.back();
-    stk.push_back(i);
-  }
-  stk.clear();
-  for (int i = n; i--;) {
-    while (!stk.empty() && !comp(a[stk.back()], a[i])) stk.pop_back();
-    nxt[i] = stk.empty() ? n : stk.back();
-    stk.push_back(i);
-  }
-  for (int i = 0; i < n; ++i)
-    if (nxt[i] == n)
-      res[i] = prv[i];
-    else if (prv[i] == -1)
-      res[i] = nxt[i];
-    else
-      res[i] = comp(a[nxt[i]], a[prv[i]]) ? prv[i] : nxt[i];
-  return res;
+    int n = a.size();
+    std::vector<int> res(n), prv(n), nxt(n), stk;
+    stk.reserve(n);
+    for (int i = 0; i < n; ++i) {
+        while (!stk.empty() && comp(a[i], a[stk.back()])) stk.pop_back();
+        prv[i] = stk.empty() ? -1 : stk.back();
+        stk.push_back(i);
+    }
+    stk.clear();
+    for (int i = n; i--;) {
+        while (!stk.empty() && !comp(a[stk.back()], a[i])) stk.pop_back();
+        nxt[i] = stk.empty() ? n : stk.back();
+        stk.push_back(i);
+    }
+    for (int i = 0; i < n; ++i)
+        if (nxt[i] == n)
+            res[i] = prv[i];
+        else if (prv[i] == -1)
+            res[i] = nxt[i];
+        else
+            res[i] = comp(a[nxt[i]], a[prv[i]]) ? prv[i] : nxt[i];
+    return res;
 }
 template <class T> std::vector<int> cartesian_tree(const std::vector<T>& a) { return cartesian_tree(a, std::less{}); }
 
@@ -326,44 +326,15 @@ int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
 
-    int n, m; cin >> n >> m;
+    int n, m;
+    cin >> n >> m;
     vector<int> a(n);
-    // vector<int> b(m);
+    vector<int> b(m);
     rep (i, n) {
         cin >> a[i];
-        a[i]--;
     }
-    // rep (i, m) {
-    //     cin >> b[i];
-    // }
-
-    // auto p = cartesian_tree(b);
-
-    vector<pair<int, int>> g(m, {-1, -1});
-    vector<bool> used_y(n, false);
-    for (int i = 0; i < m - 1; i++) {
-        int x, y; cin >> x >> y;
-        x--;
-        y--;
-        used_y[y] = true;
-        if (x > y) g[x].first = y;
-        else g[x].second = y;
-    }
-    // for (int i = 0; i < m; i++) {
-    //     if (p[i] < 0) continue;
-    //     if (i < p[i]) {
-    //         g[p[i]].first = i;
-    //     }
-    //     if (i > p[i]) {
-    //         g[p[i]].second = i;
-    //     }
-    // }
-    int r = -1;
-    for (int y = 0; y < m; y++) {
-        if (!used_y[y]) {
-            r = y;
-            break;
-        }
+    rep (i, m) {
+        cin >> b[i];
     }
 
     vector<int> ids(n);
@@ -372,6 +343,20 @@ int main() {
         return a[l] > a[r];
     });
 
+    // auto p = build_cartesian_tree(b);
+    auto p = cartesian_tree(b);
+
+    vector<pair<int, int>> g(m, {-1, -1});
+    int r = min_element(b.begin(), b.end()) - b.begin();
+    for (int i = 0; i < m; i++) {
+        if (p[i] < 0) continue;
+        if (i < p[i]) {
+            g[p[i]].first = i;
+        }
+        if (i > p[i]) {
+            g[p[i]].second = i;
+        }
+    }
 
     auto dfs = [&](auto &&self, int cur) -> pair<vector<int>, vector<int>> {
         // 左

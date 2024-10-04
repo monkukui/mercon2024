@@ -1,4 +1,5 @@
-// O(nm log n) time, O(nm) space, set<pair<int, int>> 必要ないバージョン
+// O(n^2 m) time, O(nm) space
+
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -86,47 +87,30 @@ template <class T, class Compare> std::vector<int> cartesian_tree(const std::vec
 template <class T> std::vector<int> cartesian_tree(const std::vector<T>& a) { return cartesian_tree(a, std::less{}); }
 
 int main() {
+
     int n, m; cin >> n >> m;
     vector<int> a(n);
-    // vector<int> b(m);
+    vector<int> b(m);
     rep (i, n) {
         cin >> a[i];
-        a[i]--;
     }
-    // rep (i, m) {
-    //     cin >> b[i];
-    // }
+    rep (i, m) {
+        cin >> b[i];
+    }
 
-    // auto p = cartesian_tree(b);
+    auto p = cartesian_tree(b);
 
     vector<pair<int, int>> g(m, {-1, -1});
-    vector<bool> used_y(n, false);
-    for (int i = 0; i < m - 1; i++) {
-        int x, y; cin >> x >> y;
-        x--;
-        y--;
-        used_y[y] = true;
-        if (x > y) g[x].first = y;
-        else g[x].second = y;
-    }
-    // for (int i = 0; i < m; i++) {
-    //     if (p[i] < 0) continue;
-    //     if (i < p[i]) {
-    //         g[p[i]].first = i;
-    //     }
-    //     if (i > p[i]) {
-    //         g[p[i]].second = i;
-    //     }
-    // }
-    int r = -1;
-    for (int y = 0; y < m; y++) {
-        if (!used_y[y]) {
-            r = y;
-            break;
+    int r = min_element(b.begin(), b.end()) - b.begin();
+    for (int i = 0; i < m; i++) {
+        if (p[i] < 0) continue;
+        if (i < p[i]) {
+            g[p[i]].first = i;
+        }
+        if (i > p[i]) {
+            g[p[i]].second = i;
         }
     }
-
-    // --- 
 
     auto dfs = [&](auto &&self, int cur) -> pair<vector<int>, vector<int>> {
 

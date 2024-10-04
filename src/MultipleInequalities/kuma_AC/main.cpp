@@ -172,6 +172,33 @@ bool is_tree(vector<vector<ll>> &connection) {
     return res;
 }
 
+void dfs(vector<ll> &B, vector<vector<ll>> &connection, ll now, ll l, ll r) {
+    if (now != l) {
+        ll min_b = INF;
+        ll min_index = -1;
+        for (ll i = l; i < now; ++i) {
+            if (min_b > B.at(i)) {
+                min_b = B.at(i);
+                min_index = i;
+            }
+        }
+        connection.at(now).push_back(min_index);
+        dfs(B, connection, min_index, l, now - 1);
+    }
+    if (now != r) {
+        ll min_b = INF;
+        ll min_index = -1;
+        for (ll i = now + 1; i <= r; ++i) {
+            if (min_b > B.at(i)) {
+                min_b = B.at(i);
+                min_index = i;
+            }
+        }
+        connection.at(now).push_back(min_index);
+        dfs(B, connection, min_index, now + 1, r);
+    }
+}
+
 int main() {
     ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
@@ -185,36 +212,24 @@ int main() {
         st.insert(A.at(i));
     }
     assert(st.size() == N);
-    vector<ll> X(M - 1), Y(M - 1);
-    map<ll, bool> y_already;
-    map<ll, ll> x_cnt;
+    vector<ll> B(M);
+    st = {};
+    vector<ll> B_index(M);
+    for (ll i = 0; i < M; ++i) {
+        cin >> B.at(i);
+        st.insert(B.at(i));
+        B_index.at(B.at(i) - 1) = i;
+    }
+    assert(st.size() == M);
     vector<vector<ll>> connection(M);
-    for (ll i = 0; i < M - 1; ++i) {
-        cin >> X.at(i) >> Y.at(i);
-        assert((1 <= X.at(i)) && (X.at(i) <= M));
-        assert((1 <= Y.at(i)) && (Y.at(i) <= M));
-        X.at(i) -= 1, Y.at(i) -= 1;
-        connection.at(X.at(i)).push_back(Y.at(i));
-        connection.at(Y.at(i)).push_back(X.at(i));
-        assert(X.at(i) != Y.at(i));
-        if (x_cnt.find(X.at(i)) == x_cnt.end()) {
-            x_cnt[X.at(i)] = 0;
-        }
-        x_cnt[X.at(i)] += 1;
-        assert(x_cnt[X.at(i)] < 3);
-        assert(y_already.find(Y.at(i)) == y_already.end());
-        y_already[Y.at(i)] = true;
-    }
-    if (!is_tree(connection)) {
-        cout << "No" << endl;
-        return 0;
-    }
     ll root;
     for (ll i = 0; i < M; ++i) {
-        if (y_already.find(i) == y_already.end()) {
+        if (B.at(i) == 1) {
             root = i;
         }
     }
+    dfs(B, connection, root, 0, M - 1);
+    
 
     euler_tour et(connection, root);
     vector<pll> check_order(M);
