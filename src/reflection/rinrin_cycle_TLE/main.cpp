@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 using namespace std;
 
 int main(){
@@ -29,7 +28,6 @@ int main(){
         if (n_x == s_x && n_y == s_y && x_d == 1 && x_d == 1){
             break;
         }
-        
     }while(n_t < t);
 
     if (n_t == t){
@@ -37,8 +35,9 @@ int main(){
         return 0;  
     } 
 
-    t = t % n_t;
-    do{
+    n_t = t % n_t;
+
+    for(int i = 0; i < n_t; i++){
         if (abs(s_x) == w || (n_t != 0 &&s_x == 0)){
             x_d *= -1;
         } 
@@ -47,8 +46,6 @@ int main(){
         }
         s_x += x_d;
         s_y += y_d;
-        n_t ++;
-        
-    }while(n_x == s_x && n_y == s_y && x_d == 1 && x_d == 1 && n_t < t);
+    }
     cout << s_x << " " << s_y << endl;
 }
